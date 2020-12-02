@@ -108,10 +108,29 @@ void Bestiole::bouge( int xLim, int yLim )
 
 void Bestiole::action( Milieu & monMilieu )
 {
-
+   
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
+   
 
 }
+
+void Bestiole::collide()
+{
+    double testMort = rand()/RAND_MAX; // Rand_double
+    if(testMort<=this->getProbaMort())
+    {
+        //pour tuer la bestiole, on met son âge au maximum
+        setAge(Config::getInstance()->maxAge);
+    }
+    else
+    {
+        //si la collision ne tue pas, on repart dans la direction opposée
+        setOrientation(-getOrientation());
+    }
+}
+
+
+
 
 
 void Bestiole::draw( UImg & support )
@@ -145,4 +164,77 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    
    return ( dist <= LIMITE_VUE);
 
+}
+
+std::list<Bestiole*> Bestiole::getVoisins()
+{   
+    std::list<Bestiole*> voisins;
+    for (auto b : Milieu::getListeBestiole())
+    {
+           if (jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
+           {
+              voisins.push_back(b);
+           }
+
+    }
+   return voisins;
+}
+
+
+int Bestiole::getIdentite() const {
+  return identite;
+}
+
+int Bestiole::getX() const {
+  return x;
+}
+
+int Bestiole::getY() const {
+  return y;
+}
+
+double Bestiole::getOrientation() const {
+  return orientation;
+}
+
+int Bestiole::getAgeMax() const {
+  return ageMax;
+}
+int Bestiole::getAge() const {
+  return age;
+}
+
+unsigned char* Bestiole::getColor() const {
+  return (unsigned char*) color;
+}
+
+
+
+double Bestiole::getVitesse() const {
+  return vitesse;
+}
+
+double Bestiole::getCamouflage() const {
+  return 0.0;
+}
+
+double Bestiole::getProbaMort() const {
+   return Config::getInstance()->probaMortCol;
+}
+
+//setters
+void Bestiole::setX(int newX) {
+    x = newX;
+}
+void Bestiole::setY(int newY) {
+    y = newY;
+}
+void Bestiole::setVitesse(double newVitesse) {
+    vitesse = newVitesse;
+}
+void Bestiole::setOrientation(double newOrientation) {
+    orientation = newOrientation;
+}
+void Bestiole::setAge(int newAge) {
+    age = newAge;
 }

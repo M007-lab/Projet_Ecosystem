@@ -12,7 +12,7 @@ public:
     virtual ~BestioleSimple();
     BestioleSimple(const BestioleSimple& b);
     bool jeTeVois(const Bestiole&) const override;
-    Bestiole* cloner() override;
+    Bestiole* clone() override;
 
     Comportement* getComportement() const override;
     double getCamouflage() const override;

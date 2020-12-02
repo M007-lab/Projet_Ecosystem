@@ -13,5 +13,5 @@ public:
     virtual void draw(UImg& support);
 
 
-}
+};
 #endif

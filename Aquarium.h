@@ -1,6 +1,8 @@
 #ifndef _AQUARIUM_H_
 #define _AQUARIUM_H_
 
+#include "Configuration.h"
+#include "Milieu.h"
 
 #include <iostream>
 #include <CImg.h>
@@ -9,7 +11,7 @@ using namespace std;
 using namespace cimg_library;
 
 
-class Milieu;
+// class Milieu;
 
 
 class Aquarium : public CImgDisplay

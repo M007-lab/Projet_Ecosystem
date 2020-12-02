@@ -1,9 +1,12 @@
-#ifndef _BESTIOLES_H_
-#define _BESTIOLES_H_
+#ifndef _BESTIOLE_H_
+#define _BESTIOLE_H_
 
 
 #include "UImg.h"
+#include "Comportement.h"
+#include "Milieu.h"
 
+#include <list>
 #include <iostream>
 
 using namespace std;
@@ -29,7 +32,7 @@ private :
    double            orientation;
    double            vitesse;
    double            age;
-   dou
+   
 
    T               * couleur;
 
@@ -43,10 +46,33 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-
+   virtual void toString(iostream & out) = 0;
    bool jeTeVois( const Bestiole & b ) const;
+   std::list<Bestiole*> getVoisins();
+   void collide(); // Collision between Bestioles
 
+   // Setters
+   void setX(int newX) ;
+   void setY(int newY) ;
+   void setVitesse(double newVitesse) ;
+   void setOrientation(double newOrientation) ;
+   void setAge(int newAge) ;
+
+   //getters
+   int getX() const;
+   int getY() const;
+   int getIdentite() const;
+   int getAge() const;
+   int getAgeMax() const;
+   double getVitesse() const;
+   double getOrientation() const;
    void initCoords( int xLim, int yLim );
+   virtual void getDecorateurs(std::list<std::string> &decorateurs) = 0; // to override in Decorator class 
+   virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
+   virtual double getProbaMort() const =0;
+   virtual double getVitesseCoeff() const =0;
+   virtual double getCamouflage() const = 0;
+   
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
