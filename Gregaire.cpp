@@ -26,12 +26,12 @@ void Gregaire::executeBehavior(Bestiole* bestiole) override{
 
 Comportement* Gregaire::dupliquer() const override{
     return new Gregaire(*this);
-};
+}
 
 Gregaire::~Gregaire(){
 
-};
+}
 
 std::string Gregaire::getName() override{
     return "Grégaire";
-};
+}

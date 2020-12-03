@@ -1,14 +1,15 @@
-#ifndef BESTIOLESIMPLE_H
-#define BESTIOLESIMPLE_H
+#ifndef _BESTIOLESIMPLE_H
+#define _BESTIOLESIMPLE_H
 
 #include "Bestiole.h"
 #include "Comportement.h"
+#include "RandomUtils.h"
 
 class BestioleSimple: public Bestiole {
     Comportement *comportement;
 public:
     BestioleSimple(){};
-    BestioleSimple(int[2] _pos, int _ageMax, double _vitesse, double _orientation,Comportement* c, unsigned char* _color);
+    BestioleSimple(int _x,int _y, int _ageMax, double _vitesse, double _orientation,Comportement* c, unsigned char* _color);
     virtual ~BestioleSimple();
     BestioleSimple(const BestioleSimple& b);
     bool jeTeVois(const Bestiole&) const override;
@@ -21,3 +22,4 @@ public:
 
 
 };
+#endif

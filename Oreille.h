@@ -1,9 +1,9 @@
 #ifndef OREILLE_H
 #define OREILLE_H
 
-#include "Capteur.h"
+#include "CapteurDecorateur.h"
 
-class Oreille : public Capteur {
+class Oreille : public CapteurDecorateur {
     Oreille(){};
 public :
     Oreille(BestioleSimple* base, double detec, double dist);

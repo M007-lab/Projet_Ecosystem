@@ -1,5 +1,5 @@
-#ifndef GREGAIRE
-#define GREGAIRE
+#ifndef GREGAIRE_H
+#define GREGAIRE_H
 
 #include "Comportement.h"
 class Gregaire:public Comportement{
