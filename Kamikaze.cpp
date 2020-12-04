@@ -7,6 +7,7 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     std::list<Bestiole*> voisins = bestiole->getVoisins();
     double x = bestiole->getX();
     double y = bestiole->getY();
+    double direction;
     double xCible;
     double yCible;
     
@@ -23,17 +24,10 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     }
     //on s'oriente vers la cible
     if(voisins.size() != 0) {
-        xCible -= x;
-        yCible -= y;
-        direction = -atan2(yCible, xCible);
+        //the principal value of the arc tangent of y/x, expressed in radians.
+        direction = PI - atan2(abs(y-yCible), abs(x-xCible));
+        bestiole->setDirection(direction);
     }
-    //on avance vers la bestiole la plus proche
-    x+=std::round(vitesse*cos(direction));
-    y-=std::round(vitesse*sin(direction));
-
-    bestiole->setX(x);
-    bestiole->setY(y);
-    bestiole->setDirection(direction);
 }
 
 Kamikaze* Kamikaze::dupliquer() const{
