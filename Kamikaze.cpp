@@ -1,7 +1,7 @@
 #include "Kamikaze.h"
 #include <cmath>
 
-void Kamikaze::executerStrat(Bestiole* bestiole) override{
+void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     double distanceMin = 9999999;
     double vitesse = bestiole->getVitesse();
     std::list<Bestiole*> voisins = bestiole->getVoisins();
