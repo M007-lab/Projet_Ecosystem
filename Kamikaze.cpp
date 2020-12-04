@@ -25,7 +25,7 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     //on s'oriente vers la cible
     if(voisins.size() != 0){
         //the principal value of the arc tangent of y/x, expressed in radians.
-        direction = atan2(yCible-y, xCible-x);
+        direction = PI - atan2(yCible-y, xCible-x);
         bestiole->setDirection(direction);
     }
 }
