@@ -1,8 +1,11 @@
 
 #include "Gregaire.h"
+#include <cmath>
+
 void Gregaire::executeBehavior(Bestiole* bestiole) override{
-     double directMoyenne;
-     std::list<Bestiole*> voisins = bestiole->getVoisins();
+    double directMoyenne;
+    double vitesse = bestiole->getVitesse();
+    std::list<Bestiole*> voisins = bestiole->getVoisins();
      
 
     //calcul de l'direction moyenne des bestioles voisines
