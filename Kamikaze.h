@@ -4,10 +4,10 @@
 #include "Comportement.h"
 class Kamikaze:public Comportement{
 public:
-    void executeBehavior(Bestiole* bestiole) override;
-    Comportement* dupliquer() const override;
+    virtual void executeBehavior(Bestiole* bestiole) override;
+    virtual Kamikaze* dupliquer() const override;
      ~Kamikaze(){};
-    std::string getName() override;
+    virtual std::string getName() override;
 };
 
 #endif

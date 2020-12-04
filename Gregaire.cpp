@@ -3,25 +3,25 @@
 #include <cmath>
 
 void Gregaire::executeBehavior(Bestiole* bestiole) override{
-    double directMoyenne;
+    double directionMoyenne;
     double vitesse = bestiole->getVitesse();
     std::list<Bestiole*> voisins = bestiole->getVoisins();
      
 
     //calcul de l'direction moyenne des bestioles voisines
     if(voisins.size()!=0) {
-        directMoyenne = 0;
+        directionMoyenne = 0;
         for (auto b : voisins) {
-            directMoyenne += b->getDirection();
+            directionMoyenne += b->getDirection();
         }
-        directMoyenne /= voisins.size();
+        directionMoyenne /= voisins.size();
     }
     //si elle a pas de voisins, la direction reste la même
     else{
-        directMoyenne = bestiole->getDirection();
+        directionMoyenne = bestiole->getDirection();
     }
     
-    bestiole->setDirection(directMoyenne);
+    bestiole->setDirection(directionMoyenne);
 }
 
 Comportement* Gregaire::dupliquer() const {

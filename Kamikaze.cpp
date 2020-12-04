@@ -25,15 +25,15 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     //on s'oriente vers la cible
     if(voisins.size() != 0){
         //the principal value of the arc tangent of y/x, expressed in radians.
-        direction = -atan2(yCible-y, xCible-x);
+        direction = atan2(yCible-y, xCible-x);
         bestiole->setDirection(direction);
     }
 }
 
-Kamikaze* Kamikaze::dupliquer() const{
+Kamikaze* Kamikaze::dupliquer() const override{
     return new Kamikaze(*this);
 }
 
-std::string Kamikaze::getName(){
+std::string Kamikaze::getName() override{
     return "Kamikaze";
 }
