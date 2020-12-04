@@ -1,6 +1,6 @@
 #include "CreateurBestiole.h"
 
-#include "RandomUtils.h"
+
 CreateurBestiole::CreateurBestiole()
 {   
 
@@ -24,15 +24,15 @@ Bestiole* CreateurBestiole::createBestiole(Comportement* c,unsigned char _color[
 {
     Bestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer(),_color);
     Rand_double rd(0,1);
-    if(rd()<= Config::getInstance()->probaYeux)
-        ptr = new Yeux(ptr,gammaY(),deltaY(),alpha());
-    if(rd()<= Config::getInstance()->probaOreilles)
-        ptr = new Oreille(ptr,gammaO(),deltaO());
-    if(rd()<= Config::getInstance()->probaNageoires)
-        ptr = new Nageoire(ptr,nu());
-    if(rd()<= Config::getInstance()->probaCarapace)
-        ptr = new Carapace(ptr,omega(),eta());
-    if(rd()<= Config::getInstance()->probaCamouflage)
-        ptr = new Camouflage(ptr,psi());
+    // if(rd()<= Config::getInstance()->probaYeux)
+    //     ptr = new Yeux(ptr,gammaY(),deltaY(),alpha());
+    // if(rd()<= Config::getInstance()->probaOreilles)
+    //     ptr = new Oreille(ptr,gammaO(),deltaO());
+    // if(rd()<= Config::getInstance()->probaNageoires)
+    //     ptr = new Nageoire(ptr,nu());
+    // if(rd()<= Config::getInstance()->probaCarapace)
+    //     ptr = new Carapace(ptr,omega(),eta());
+    // if(rd()<= Config::getInstance()->probaCamouflage)
+    //     ptr = new Camouflage(ptr,psi());
     return ptr;
 }

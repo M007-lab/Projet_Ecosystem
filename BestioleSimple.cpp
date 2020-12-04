@@ -1,8 +1,7 @@
 #include "BestioleSimple.h"
-#include "RandomUtils.h"
 #define PI 3.14159265359
 
-BestioleSimple::BestioleSimple(int[2] pos, int _ageMax, double _vitesse, double _orientation,Comportement* c, unsigned char* _color) : Bestiole(_x,_y,_ageMax,_vitesse,_orientation)
+BestioleSimple::BestioleSimple(int _x,int _y, int _ageMax, double _vitesse, double _orientation,Comportement* c, unsigned char* _color) : Bestiole(_x,_y,_ageMax,_vitesse,_orientation)
 {
     this->comportement = c;
     this->setColor(_color);
@@ -26,7 +25,7 @@ Comportement* BestioleSimple::getComportement() const{
     return this->comportement;
 }
 
-Bestiole* BestioleSimple::cloner()
+Bestiole* BestioleSimple::clone()
 {
     Bestiole* ptr = new BestioleSimple(*this);
     double newOrientation= Rand_double(0,2*PI)();
@@ -44,7 +43,12 @@ void BestioleSimple::draw(UImg& support){
 }
 
 double BestioleSimple::getCamouflage() const {
-    return 0;
+    return 0.0;
+}
+
+
+double Bestiole::getProbaMort() const {
+   return Config::getInstance()->probaMortCol;
 }
 
 //une fois arrivé à BestioleSimple, on a parcouru tous les décorateurs, on ne rajoute donc rien à la liste

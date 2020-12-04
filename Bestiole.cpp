@@ -198,15 +198,15 @@ double Bestiole::getOrientation() const {
 }
 
 int Bestiole::getAgeMax() const {
-  return ageMax;
+  return Config::getInstance()->ageMax;
 }
 int Bestiole::getAge() const {
   return age;
 }
 
-unsigned char* Bestiole::getColor() const {
-  return (unsigned char*) color;
-}
+// unsigned char* Bestiole::getColor() const {
+//   return (unsigned char*) color;
+// }
 
 
 
@@ -214,13 +214,7 @@ double Bestiole::getVitesse() const {
   return vitesse;
 }
 
-double Bestiole::getCamouflage() const {
-  return 0.0;
-}
 
-double Bestiole::getProbaMort() const {
-   return Config::getInstance()->probaMortCol;
-}
 
 //setters
 void Bestiole::setX(int newX) {

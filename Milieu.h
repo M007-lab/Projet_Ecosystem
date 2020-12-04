@@ -12,7 +12,10 @@
 
 using namespace std;
 
-
+class Color{
+public:
+   Color(unsigned char r,unsigned char g,unsigned char b);
+};
 class Milieu : public UImg
 {
 
@@ -21,6 +24,12 @@ private :
 
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
+   // Initialisation colors
+   Color purple  = Color(255,0,255);
+   Color red    = Color(255,0,0);
+   Color green  = Color(0,255,0);
+   Color blue   = Color(0,0,255);
+   Color yellow = Color(255,255,0);
    // Initialisation des comportements
    std::vector<Comportement *> listeComportements = {new Gregaire,new Kamikaze, new Peureuse,new Prevoyante,new Multiple};
    std::map<Comportement*,Color> mapComportementCouleur;

@@ -24,7 +24,7 @@ void Gregaire::executeBehavior(Bestiole* bestiole) override{
     bestiole->setDirection(directMoyenne);
 }
 
-Comportement* Gregaire::dupliquer() const override{
+Comportement* Gregaire::dupliquer() const {
     return new Gregaire(*this);
 }
 
@@ -32,6 +32,7 @@ Gregaire::~Gregaire(){
 
 }
 
-std::string Gregaire::getName() override{
+std::string Gregaire::getName() 
+{
     return "Grégaire";
 }
