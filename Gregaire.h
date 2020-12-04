@@ -1,3 +1,6 @@
+#ifndef GREGAIRE
+#define GREGAIRE
+
 #include "Comportement.h"
 class Gregaire:public Comportement{
 public:
@@ -6,3 +9,5 @@ public:
      ~Gregaire(){};
     std::string getName() override;
 };
+
+#endif
