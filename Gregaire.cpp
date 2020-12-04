@@ -20,18 +20,7 @@ void Gregaire::executeBehavior(Bestiole* bestiole) override{
     else{
         directMoyenne = bestiole->getDirection();
     }
-    //calcul de la nouvelle position
-    bestiole->setX(bestiole->getX()+std::round(vitesse*cos(directMoyenne)));
-    bestiole->setY(bestiole->getY()-std::round(vitesse*sin(directMoyenne));
-    while(directMoyenne>2*PI){
-         directMoyenne-=2*PI;
-    }
-    while(directMoyenne>2*PI){
-         directMoyenne-=2*PI;
-    }
-    while(directMoyenne<0){
-         directMoyenne+=2*PI;
-    }
+    
     bestiole->setDirection(directMoyenne);
 }
 
