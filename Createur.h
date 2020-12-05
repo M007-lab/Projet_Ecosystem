@@ -1,5 +1,5 @@
 class Createur
 {
-    Createur();
-    ~Createur();
+    Createur(){};
+    ~Createur(){};
 }

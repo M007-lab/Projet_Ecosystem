@@ -51,8 +51,8 @@ public:
 
 
     // Configuration Vitesse et durée de vie
-    double maxVitesse;
-    int maxAge;
+    double vitesseMax;
+    int ageMax;
 
     //Configuration Yeux
     double alphaMin; // en degrees

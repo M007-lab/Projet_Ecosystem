@@ -166,10 +166,10 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 }
 
-std::list<Bestiole*> Bestiole::getVoisins()
+std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
 {   
     std::list<Bestiole*> voisins;
-    for (auto b : Milieu::getListeBestiole())
+    for (auto b : monMilieu.getListeBestioles())
     {
            if (jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
            {

@@ -1,5 +1,6 @@
 #include "CreateurBestiole.h"
-
+#include "RandomUtils.h"
+#include "BestioleSimple.h"
 
 CreateurBestiole::CreateurBestiole()
 {   
@@ -20,9 +21,9 @@ CreateurBestiole::CreateurBestiole()
     orientation = Rand_double(0,2*M_PI);
 }
 
-Bestiole* CreateurBestiole::createBestiole(Comportement* c,unsigned char _color[3])
+Bestiole* CreateurBestiole::createBestiole(Comportement* c)//,unsigned char _color[3])
 {
-    Bestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer(),_color);
+    Bestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer());//,_color);
     Rand_double rd(0,1);
     // if(rd()<= Config::getInstance()->probaYeux)
     //     ptr = new Yeux(ptr,gammaY(),deltaY(),alpha());

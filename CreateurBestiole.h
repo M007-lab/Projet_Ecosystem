@@ -3,6 +3,7 @@
 
 #include "Configuration.h"
 #include "CreateurBestiole.h"
+#include "Createur.h"
 #include "Comportement.h"
 #include "Multiple.h"
 #include "Gregaire.h"
@@ -39,7 +40,8 @@ class CreateurBestiole : public Createur
         Rand_double orientation;
     public:
         CreateurBestiole();
-        Bestiole * createBestiole(Comportement* c,unsigned char _color[3]);
+        ~CreateurBestiole();
+        Bestiole * createBestiole(Comportement* c)//,unsigned char _color[3]);
 }
 
 #endif
