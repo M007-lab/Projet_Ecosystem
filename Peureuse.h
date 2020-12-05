@@ -4,10 +4,10 @@
 #include "Comportement.h"
 class Peureuse:public Comportement{
 public:
-    void executeBehavior(Bestiole* bestiole) override;
-    Comportement* dupliquer() const override;
+    virtual void executeBehavior(Bestiole* bestiole) override;
+    virtual Peureuse* dupliquer() const override;
      ~Peureuse(){};
-    std::string getName() override;
+    virtual std::string getName() override;
 };
 
 #endif
