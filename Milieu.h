@@ -23,7 +23,7 @@ private :
    static const T          white[];
 
    int                     width, height;
-   std::vector<Bestiole*>   listeBestioles;
+   std::vector<Bestiole>   listeBestioles;
    // Initialisation colors
    // Color purple  = Color(255,0,255);
    // Color red    = Color(255,0,0);
@@ -31,7 +31,7 @@ private :
    // Color blue   = Color(0,0,255);
    // Color yellow = Color(255,255,0);
    // Initialisation des comportements
-   std::vector<Comportement *> listeComportements = {new Gregaire,new Kamikaze, new Peureuse,new Prevoyante,new Multiple};
+   std::vector<Comportement *> listeComportements = {new Gregaire,new Kamikaze, new Peureuse};//,new Prevoyante,new Multiple};
    //std::map<Comportement*,Color> mapComportementCouleur;
    std::map<Comportement*, double> mapComportementPct;
    Createur creator = CreateurBestiole() ;

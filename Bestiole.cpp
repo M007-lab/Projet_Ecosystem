@@ -50,6 +50,10 @@ Bestiole::Bestiole( const Bestiole & b )
 
 }
 
+Bestiole::Bestiole(int x,int y,int ageMax,double vitesse,double orientation)
+{
+   x = x; y = y; ageMax = ageMax; vitesse = vitesse; orientation = orientation;
+}
 
 Bestiole::~Bestiole( void )
 {
@@ -120,7 +124,7 @@ void Bestiole::collide()
     if(testMort<=this->getProbaMort())
     {
         //pour tuer la bestiole, on met son âge au maximum
-        setAge(Config::getInstance()->maxAge);
+        setAge(Config::getInstance()->ageMax);
     }
     else
     {
@@ -166,12 +170,12 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 }
 
-std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
+std::list<Bestiole> Bestiole::getVoisins(Milieu & monMilieu)
 {   
-    std::list<Bestiole*> voisins;
+    std::list<Bestiole> voisins;
     for (auto b : monMilieu.getListeBestioles())
     {
-           if (jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
+           if (jeTeVois(b) && !(*this == b)) // == is overloaded based on Identite
            {
               voisins.push_back(b);
            }

@@ -22,7 +22,8 @@
 #include "RandomUtils.h"
 
 class CreateurBestiole : public Createur
-{   private:
+{   
+    private:
          //random generators
         Rand_double vitesse;
         Rand_int    age;
@@ -41,7 +42,7 @@ class CreateurBestiole : public Createur
     public:
         CreateurBestiole();
         ~CreateurBestiole();
-        Bestiole * createBestiole(Comportement* c)//,unsigned char _color[3]);
-}
+        Bestiole & createBestiole(Comportement* c);//,unsigned char _color[3]);
+};
 
 #endif

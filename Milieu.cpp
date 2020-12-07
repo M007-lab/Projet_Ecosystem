@@ -33,9 +33,9 @@ Milieu::~Milieu( void )
 void Milieu::init_population()
 {
    
-    // listeComportements = {new Gregaire,new Kamikaze, new Peureuse,new Prevoyante,new Multiple};
+    listeComportements  = {new Gregaire,new Kamikaze } ;//, new Peureuse};//,new Prevoyante,new Multiple};
     // Chargmeent des pourcentages par Comportment
-    std::vector<double> listeWeights = {Config::getInstance()->pctGregaire,Config::getInstance()->pctKamikaze,Config::getInstance()->pctPeureuse,Config::getInstance()->pctPrevoyante,Config::getInstance()->pctMulti};
+    std::vector<double> listeWeights = {Config::getInstance()->pctGregaire,Config::getInstance()->pctKamikaze};//,Config::getInstance()->pctPeureuse,Config::getInstance()->pctPrevoyante,Config::getInstance()->pctMulti};
     // On stocke les couleurs dans une liste
     // std::vector<Color> couleurs = {blue,red,yellow,green,purple};
     for(unsigned int i=0;i<listeComportements.size();++i)
@@ -50,8 +50,8 @@ void Milieu::init_population()
     std::vector<Comportement*> _population = utils_init(listeComportements,listeWeights,n);
     for (auto element : _population)
     {
-        Color _color = mapComportementCouleur[element];
-        addBestiole(creator.createBestiole(element,_color.color));
+        //Color _color = mapComportementCouleur[element];
+        addBestiole(creator.createBestiole(element));//,_color.color));
     }
 
 }
@@ -93,7 +93,7 @@ int Milieu::nbVoisins( const Bestiole & b )
 
 
    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-      if ( !(b == *it) && b.jeTeVois(*it) )
+      //if ( !(b == *it) && b.jeTeVois(*it) )
          ++nb;
 
    return nb;

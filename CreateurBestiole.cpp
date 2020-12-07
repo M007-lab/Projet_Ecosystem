@@ -21,7 +21,7 @@ CreateurBestiole::CreateurBestiole()
     orientation = Rand_double(0,2*M_PI);
 }
 
-Bestiole* CreateurBestiole::createBestiole(Comportement* c)//,unsigned char _color[3])
+Bestiole CreateurBestiole::createBestiole(Comportement* c)//,unsigned char _color[3])
 {
     Bestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer());//,_color);
     Rand_double rd(0,1);
@@ -35,5 +35,5 @@ Bestiole* CreateurBestiole::createBestiole(Comportement* c)//,unsigned char _col
     //     ptr = new Carapace(ptr,omega(),eta());
     // if(rd()<= Config::getInstance()->probaCamouflage)
     //     ptr = new Camouflage(ptr,psi());
-    return ptr;
+    return *ptr;
 }

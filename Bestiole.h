@@ -48,7 +48,8 @@ public :                                           // Forme canonique :
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
    virtual bool jeTeVois( const Bestiole & b ) const = 0;
-   std::list<Bestiole*> getVoisins(Milieu & monMilieu);
+   virtual double getVitesse() const = 0;
+   std::list<Bestiole> getVoisins(Milieu & monMilieu);
    void collide(); // Collision between Bestioles
    virtual Bestiole* clone() = 0;
    virtual Comportement* getComportement() const = 0;
