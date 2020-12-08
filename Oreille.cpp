@@ -6,7 +6,7 @@ Oreille::Oreille(Bestiole* base, double detec, double dist) {
     this->capaciteDetection = detec;
     this->angle = 360;
     this->distance = dist;
-    this->capteursDecorateurs.push_back(this);
+    this->capteurDecorateurs.push_back(this);
 }
 
 

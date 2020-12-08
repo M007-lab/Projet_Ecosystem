@@ -4,15 +4,13 @@
 #include "Bestiole.h"
 #include "Comportement.h"
 
-class AccesoireDecorateur : public Bestiole {
-  protected :
+class AccessoireDecorateur : public Bestiole {
+protected :
     std::string name;
     Bestiole* base;
-  public :
-    virtual ~AccesoireDecorateur();
-    Bestiole* getBase() const;
-    virtual void draw(UImg& support);
+    std::list<AccessoireDecorateur> accessoiresDecorateurs;
 
+<<<<<<< HEAD
     // virtual void collisionBestiole() override;
     virtual double getVitesse() const =0;
     virtual double getCamouflage() const=0 ;
@@ -24,17 +22,17 @@ class AccesoireDecorateur : public Bestiole {
     virtual Bestiole* clone() = 0;
     // unsigned char* getLightColor() const;
     std::string getName();
+=======
+public :
+    virtual ~AccessoireDecorateur();
+    virtual void draw(UImg& support);
+    virtual bool jeTeVois( const Bestiole & b ) const;
+>>>>>>> 735f446b4822c7821ee1faedfbde2fc1fee797f7
 
+    Bestiole* getBase() const;
+    std::string getName() const;
 
-    // getter
-    // Comportement* getComportement() const;
-    // int getIdentite() const override;
-    // int getPosition() const override;
-    // double getOrientation() const override;
-    // int getAgeMax() const override;
-    // int getAge() const override;
-    // unsigned char * getColor() const override;
-    virtual void getDecorateurs(std::list<std::string> &decorateurs) override;
+    std::list<AccessoireDecorateur> getAccessoireDecorateurs() override;
 };
 
-// #endif
+#endif

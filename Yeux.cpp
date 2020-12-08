@@ -7,7 +7,7 @@
         this->capaciteDetection = detec;
         this->angle = angle;
         this->distance = dist;
-        this->capteursDecorateurs.push_back(this);
+        this->capteurDecorateurs.push_back(this);
     }
 
 
@@ -17,7 +17,6 @@
         bool dansArc = this->dansArcVue(autre, this->angle);
         return ( (jeVois && distanceOk && dansArc) || this->getBase()->jeTeVois(autre));
     }
-
 
     void Yeux::draw(UImg& support) {
         double angleMin = this->getOrientation() - this->angle/2;

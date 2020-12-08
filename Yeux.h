@@ -11,7 +11,7 @@ class Yeux : public Capteur {
 public :
     Yeux(BestioleSimple* base, double detec, double dist, double angle);
     bool jeTeVois(const Bestiole & autre) const override;
-    virtual void draw(UImg& support);
+    void draw(UImg& support);
     bool isYeux(CapteurDecorateur *capDec);// Verify if an element of the list capteurDecorateurs is an instance of the Yeux
     Yeux* castYeux(CapteurDecorateur *capDec); // DownCast a CapteurDecorateur to Oreille
 
