@@ -27,7 +27,7 @@ public :
    ~Aquarium( void );
 
    Milieu & getMilieu( void ) { return *flotte; }
-
+   void report(void);
    void run( void );
 
 };

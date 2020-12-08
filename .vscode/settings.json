@@ -49,6 +49,7 @@
         "typeinfo": "cpp",
         "chrono": "cpp",
         "map": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "iomanip": "cpp"
     }
 }

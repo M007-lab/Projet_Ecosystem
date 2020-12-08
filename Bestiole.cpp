@@ -158,31 +158,31 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 
-bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
+// bool Bestiole::jeTeVois( const Bestiole & b ) const
+// {
 
-   double         dist;
+//    double         dist;
 
 
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+//    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
    
-   return ( dist <= LIMITE_VUE);
+//    return ( dist <= LIMITE_VUE);
 
-}
+// }
 
-std::list<Bestiole> Bestiole::getVoisins(Milieu & monMilieu)
-{   
-    std::list<Bestiole> voisins;
-    for (auto b : monMilieu.getListeBestioles())
-    {
-           if (jeTeVois(b) && !(*this == b)) // == is overloaded based on Identite
-           {
-              voisins.push_back(b);
-           }
+// std::list<Bestiole> Bestiole::getVoisins(Milieu & monMilieu)
+// {   
+//     std::list<Bestiole> voisins;
+//     for (auto b : monMilieu.getListeBestioles())
+//     {
+//            if (jeTeVois(b) && !(*this == b)) // == is overloaded based on Identite
+//            {
+//               voisins.push_back(b);
+//            }
 
-    }
-   return voisins;
-}
+//     }
+//    return voisins;
+// }
 
 
 int Bestiole::getIdentite() const {

@@ -3,7 +3,7 @@ template <typename T>
 // Pour tirer n élément dans une liste/vector, en respectant les poids dans weight si sum(weight) = 1
 // Aucune garantie si sum(weight) != 1
 // Méthode qui va être utilisée pour initialiser la population
-std::vector<T> utils_init(std::vector<T> list,std::vector<double> weight,int number)
+std::vector<T> init_n_elements(std::vector<T> list,std::vector<double> weight,int number)
 {
     // Vérification des arguments
     if(list.size() != weight.size() && number > 0 )
@@ -21,7 +21,7 @@ template <typename T>
 // Pour titer un élément au hasard dans une liste, en respectant les poids dans weight si sum(weight) = 1
 // Aucune garantie si sum(weight) != 1
 // Méthode qui va être utilisée pour ajouter au hasard une bestiole au cours de la simulation
-T random_weighted(std::vector<T> list,std::vector<double> weight)
+T random_element(std::vector<T> list,std::vector<double> weight)
 {
     // Vérification des arguments
     if(list.size() != weight.size())
