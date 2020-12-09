@@ -2,7 +2,6 @@
 #define CREATEURBESTIOLE_H
 
 #include "Configuration.h"
-#include "FactoryBestiole.h"
 #include "Factory.h"
 #include "Comportement.h"
 #include "Multiple.h"
@@ -17,8 +16,6 @@
 #include "Nageoire.h"
 #include "Carapace.h"
 #include "Camouflage.h"
-
-
 #include "RandomUtils.h"
 
 class FactoryBestiole : public Factory

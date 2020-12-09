@@ -2,9 +2,8 @@
 #define _COMPORTEMENT_H
 
 #include "Bestiole.h"
-#include "Milieu.h"
 #include "Configuration.h"
-
+class Milieu;
 // An interface implementing startegy pattern
 class Comportement{
 public:

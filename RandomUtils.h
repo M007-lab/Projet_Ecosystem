@@ -1,3 +1,6 @@
+#ifndef RANDUTILS_H
+#define RANDUTILS_H
+
 #include <vector>
 #include "RandGenerator.h"
 
@@ -47,3 +50,4 @@ T random_element(std::vector<T> list,std::vector<double> weight)
     return randomlist[rd()];
 };
 
+#endif

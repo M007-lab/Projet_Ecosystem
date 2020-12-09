@@ -3,7 +3,6 @@
 
 
 #include "UImg.h"
-#include "Bestiole.h"
 #include "FactoryBestiole.h"
 // #include "Createur.h"
 #include <iostream>

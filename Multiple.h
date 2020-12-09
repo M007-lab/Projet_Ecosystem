@@ -1,5 +1,5 @@
-#ifndef MULTIPLE
-#define MULTIPLE
+#ifndef MULTIPLE_H
+#define MULTIPLE_H
 
 #include "Comportement.h"
 

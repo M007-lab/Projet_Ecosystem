@@ -21,10 +21,14 @@ BestioleSimple::~BestioleSimple(){
 //     return false;
 // }
 
-// Comportement* BestioleSimple::getComportement() const{
-//     return this->comportement;
-// }
+Comportement* BestioleSimple::getComportement() const{
+    return this->comportement;
+}
 
+void Bestiole::action( Milieu & monMilieu )
+{
+    
+}
 // Bestiole* BestioleSimple::clone()
 // {
 //     Bestiole* ptr = new BestioleSimple(*this);

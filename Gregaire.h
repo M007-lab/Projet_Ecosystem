@@ -3,7 +3,7 @@
 
 #include "Comportement.h"
 class Gregaire:public Comportement{
-public:
+public: 
     void executeBehavior(Bestiole* bestiole,Milieu& milieu) override;
     virtual Gregaire* dupliquer() const override;
      ~Gregaire(){};

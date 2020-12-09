@@ -1,5 +1,5 @@
-#ifndef KAMIKAZE
-#define KAMIKAZE
+#ifndef KAMIKAZE_H
+#define KAMIKAZE_H
 
 #include "Comportement.h"
 

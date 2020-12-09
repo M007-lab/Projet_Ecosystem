@@ -1,3 +1,5 @@
+#ifndef RANDGEN_H
+#define RANDGEN_H
 #include <cmath>
 
 class Rand_double{
@@ -34,3 +36,4 @@ int Rand_int::operator()()
     int f = rand() / RAND_MAX;
     return _low + f * (_high - _low);
 }
+#endif

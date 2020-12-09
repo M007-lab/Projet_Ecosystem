@@ -3,7 +3,6 @@
 
 
 #include "UImg.h"
-#include "Comportement.h"
 #include "Milieu.h"
 
 #include <list>
@@ -12,7 +11,8 @@
 using namespace std;
 
 
-
+class Comportement;
+class Milieu;
 
 
 class Bestiole
@@ -45,8 +45,8 @@ public :                                           // Forme canonique :
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    Bestiole(int x,int y,int ageMax,int vitesse,int orientation);
    ~Bestiole( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
-   virtual void action( Milieu & monMilieu ) = 0;
+                                                     // Operateur d'affectation binaire par defaut
+   virtual void action(Milieu & monMilieu ) = 0;
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
    virtual bool jeTeVois( const Bestiole & b ) const = 0;

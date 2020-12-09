@@ -1,5 +1,5 @@
-#ifndef PREVOYANTE
-#define PREVOYANTE
+#ifndef PREVOYANTE_H
+#define PREVOYANTE_H
 
 #include "Comportement.h"
 

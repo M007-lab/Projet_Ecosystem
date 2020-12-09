@@ -1,5 +1,5 @@
-#ifndef PEUREUSE
-#define PEUREUSE
+#ifndef PEUREUSE_H
+#define PEUREUSE_H
 
 #include "Comportement.h"
 class Peureuse:public Comportement{

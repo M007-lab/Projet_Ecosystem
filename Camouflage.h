@@ -1,5 +1,5 @@
-#ifndef CAMOUFLAGE_H
-#define CAMOUFLAGE_H
+#ifndef _CAMOUFLAGE_H
+#define _CAMOUFLAGE_H
 
 #include "AccessoireDecorateur.h"
 
