@@ -14,7 +14,7 @@ class CapteurDecorateur : public Bestiole {
     Bestiole* getBase() const;
     std::string getName() const;
 
-    virtual bool jeTeVois( const Bestiole & b ) const override;
+    virtual bool jeTeVois( const Bestiole & b ) const override = 0;
 
     virtual void toString(std::ostringstream stream) = 0;
     virtual void draw(UImg& support) = 0;

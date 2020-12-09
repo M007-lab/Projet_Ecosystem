@@ -1,11 +1,12 @@
 #include "Oreille.h"
-const double      Oreille::angle = 360;
+
 
 Oreille::Oreille(Bestiole* base, double detec, double dist) {
     this->name = "Oreille";
     this->base = base;
     this->capaciteDetection = detec;
     this->distance = dist;
+    
 }
 
 void Oreille::toString(std::ostringstream stream) {
@@ -26,7 +27,7 @@ void Oreille::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Oreille& oreille) {
-    flot << this->getBase() << "," << this->getName() << "," << oreille.distance << "," << oreille.capaciteDetection << "\n";
+    flot << oreille.getVitesse() << "," << oreille.getName() << "," << oreille.distance << "," << oreille.capaciteDetection << "\n";
     return flot ;
 }
 

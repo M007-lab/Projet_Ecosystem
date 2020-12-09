@@ -9,10 +9,10 @@ private:
 
 public:
     Nageoire(Bestiole* base, double coefVitesse);
-    double getVitesse() override;
+    double getVitesse() const override;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support);
 
-    friend std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) ;
+    friend std::ostream& operator<<(std::ostream& flot , const Nageoire& ngeoire) ;
 };
 #endif

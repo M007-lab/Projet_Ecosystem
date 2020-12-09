@@ -4,8 +4,11 @@
 #include "CapteurDecorateur.h"
 
 class Oreille : public CapteurDecorateur {
+
+    static const double      ANGLE = 360;
+
     double distance;
-    const double angle;
+    // const double angle;
     double capaciteDetection;
 
 public :
