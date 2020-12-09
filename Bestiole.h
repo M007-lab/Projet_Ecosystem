@@ -67,11 +67,16 @@ public :                                           // Forme canonique :
    double getVitesse() const;
    double getOrientation() const;
    void initCoords( int xLim, int yLim );
-   virtual void getDecorateurs(std::list<std::string> &decorateurs) = 0; // to override in Decorator class 
+   virtual  getCapteursDecorateurs() = 0;
+   virtual getAccessoireDecorateurs() = 0// to override in Decorator class
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
    virtual double getProbaMort() const =0;
    virtual double getVitesseCoeff() const =0;
    virtual double getCamouflage() const = 0;
+   double getDistanceA(const Bestiole* b) const;
+
+   bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const;
+    double between0and2PI(double angle)
    
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );

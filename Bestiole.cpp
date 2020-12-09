@@ -222,6 +222,11 @@ double Bestiole::getProbaMort() const {
    return Config::getInstance()->probaMortCol;
 }
 
+double getDistanceA(const Bestiole* b) const {
+    const double x_diff = this->getX() - b->getX();
+    const double y_diff = this->getY() - b->getY();
+    return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
+}
 //setters
 void Bestiole::setX(int newX) {
     x = newX;
@@ -237,4 +242,36 @@ void Bestiole::setOrientation(double newOrientation) {
 }
 void Bestiole::setAge(int newAge) {
     age = newAge;
+}
+
+bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const {
+    double dist;
+    dist = this.getDistanceA(b);
+    return ( dist <= distance );
+}
+
+double between0and2PI(double angle)
+{
+
+    double PI = 3.14159265358979323844;
+    while (angle > 2.0*PI)
+        angle -= 2.0*PI;
+    while (angle < 0)
+        angle += 2.0*PI;
+    return angle;
+}
+
+bool Bestiole::dansArcVue(const Bestiole & b, double variance) const {
+    double precision = 0.0001;
+    double angle = between0and2PI(-atan2(b.getY()-this->getY(),b.getX()-this->getX()));
+    double end = between0and2PI(this->getOrientation()+variance/2);
+    double start = between0and2PI(this->getOrientation()-variance/2);
+    if(std::abs(start - end) < precision)
+        return false;
+    if((end >= angle)&&(angle>=start))
+        return true;
+    if((end <= angle) && (angle <= start)) {
+        return true;
+    }
+    return false;
 }
