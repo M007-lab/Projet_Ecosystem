@@ -5,7 +5,7 @@
 
 class Oreille : public CapteurDecorateur {
 
-    static const double      ANGLE = 360;
+    static constexpr double      ANGLE = 360;
 
     double distance;
     // const double angle;

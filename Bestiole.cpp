@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 #include <cmath>
-
+#define PI 3.14159265359
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
@@ -48,6 +48,11 @@ Bestiole::Bestiole( const Bestiole & b )
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
+}
+
+Bestiole::Bestiole(int x,int y,int ageMax,int vitesse,int orientation)
+{
+    x = x; y = y; ageMax = ageMax; vitesse = vitesse; orientation = orientation;
 }
 
 
@@ -120,7 +125,7 @@ void Bestiole::collide()
     if(testMort<=this->getProbaMort())
     {
         //pour tuer la bestiole, on met son âge au maximum
-        setAge(Config::getInstance()->maxAge);
+        setAge(Config::getInstance()->ageMax);
     }
     else
     {
@@ -153,15 +158,10 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 
-bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
-    return false;
-}
-
 std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
 {   
     std::list<Bestiole*> voisins;
-    for (auto b : monMilieu.getListeBestioles())
+    for (auto b : monMilieu.getBestiolesList())
     {
            if (this->jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
            {
@@ -230,14 +230,14 @@ void Bestiole::setAge(int newAge) {
 }
 
 
-double Bestiole::getDistanceA(const Bestiole* b) const {
-    double x_diff = this->getX() - b->getX();
-    double y_diff = this->getY() - b->getY();
+double Bestiole::getDistanceA(const Bestiole& b) const {
+    double x_diff = this->getX() - b.getX();
+    double y_diff = this->getY() - b.getY();
     return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
 }
 
 bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const {
-    double dist = this.getDistanceA(b);
+    double dist = this->getDistanceA(b);
     return ( dist <= distance );
 }
 

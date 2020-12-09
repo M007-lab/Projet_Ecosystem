@@ -1,10 +1,10 @@
 #include "Kamikaze.h"
 #include <cmath>
 
-void Kamikaze::executeBehavior(Bestiole* bestiole) override{
+void Kamikaze::executeBehavior(Bestiole* bestiole, Milieu& milieu) {
     double distanceMin = 9999999;
     double vitesse = bestiole->getVitesse();
-    std::list<Bestiole*> voisins = bestiole->getVoisins();
+    std::list<Bestiole*> voisins = bestiole->getVoisins(milieu);
     double x = bestiole->getX();
     double y = bestiole->getY();
     double direction;
@@ -26,7 +26,7 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     if(voisins.size() != 0){
         //the principal value of the arc tangent of y/x, expressed in radians.
         direction = atan2(yCible-y, xCible-x);
-        bestiole->setDirection(direction);
+        bestiole->setOrientation(direction);
     }
 }
 
@@ -34,10 +34,10 @@ Kamikaze::~Kamikaze(){
 
 }
 
-Kamikaze* Kamikaze::dupliquer() const override{
+Kamikaze* Kamikaze::dupliquer() const {
     return new Kamikaze(*this);
 }
 
-std::string Kamikaze::getName() override{
+std::string Kamikaze::getName() {
     return "Kamikaze";
 }

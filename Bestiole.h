@@ -32,6 +32,7 @@ protected :
    double            orientation;
    double            vitesse;
    double            age;
+   double            ageMax;
    
 
    T               * couleur ;
@@ -42,16 +43,17 @@ private :
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
+   Bestiole(int x,int y,int ageMax,int vitesse,int orientation);
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    virtual void action( Milieu & monMilieu ) = 0;
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
-   virtual bool jeTeVois( const Bestiole & b ) const;
+   virtual bool jeTeVois( const Bestiole & b ) const = 0;
    std::list<Bestiole*> getVoisins(Milieu & monMilieu);
    virtual void collide(); // Collision between Bestioles
    virtual Bestiole* clone() = 0;
-   virtual Comportement* getComportement() const = 0;
+
 
    // Setters
    virtual void setX(int newX) ;
@@ -76,7 +78,7 @@ public :                                           // Forme canonique :
    virtual unsigned char * getColor() const;
    virtual unsigned char* getLightColor() const;
 
-   virtual double getDistanceA(const Bestiole* b) const;
+   virtual double getDistanceA(const Bestiole& b) const;
    virtual bool dansDistanceDetection(const Bestiole & b, double distance) const;
    virtual double between0and2PI(double angle) const;
    virtual bool dansChampsAngulaire(const Bestiole & b, double champ) const;

@@ -4,8 +4,8 @@
 #define PI 3.14159265359
 
 
-void Prevoyante::executeBehavior(Bestiole* bestiole) override{
-    double directionInitiale = bestiole->getDirection();
+void Prevoyante::executeBehavior(Bestiole* bestiole, Milieu& milieu) {
+    double directionInitiale = bestiole->getOrientation();
     double step = 2 * PI / 100;
     std::list<Bestiole*> voisins = bestiole->getVoisins();
 
@@ -21,8 +21,8 @@ void Prevoyante::executeBehavior(Bestiole* bestiole) override{
         return angle;
     }
 
-    bool isSameOrientation(double directionTest, Bestiole* bestioleVoisine) {
-        directionVoisin = bestioleVoisine->getDirection();
+    bool isSameDirection(double directionTest, Bestiole* bestioleVoisine) {
+        directionVoisin = bestioleVoisine->getOrientation();
         return (directionVoisin == directionTest) || (directionVoisin == getMesurePrincipale(directionTest + PI));
     }
     //test 100 orientations
@@ -36,7 +36,7 @@ void Prevoyante::executeBehavior(Bestiole* bestiole) override{
             continue;
         }
         else{
-            bestiole->setDirection(directionTest);
+            bestiole->setOrientation(directionTest);
             break; 
         }
 

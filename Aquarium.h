@@ -3,6 +3,7 @@
 
 #include "Configuration.h"
 #include "Milieu.h"
+#include "Bestiole.h"
 
 #include <iostream>
 #include <CImg.h>

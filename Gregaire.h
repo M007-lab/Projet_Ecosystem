@@ -4,7 +4,7 @@
 #include "Comportement.h"
 class Gregaire:public Comportement{
 public:
-    virtual void executeBehavior(Bestiole* bestiole) override;
+    void executeBehavior(Bestiole* bestiole,Milieu& milieu) override;
     virtual Gregaire* dupliquer() const override;
      ~Gregaire(){};
     virtual std::string getName() override;

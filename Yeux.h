@@ -11,8 +11,11 @@ class Yeux : public CapteurDecorateur {
 public :
     Yeux(Bestiole* base, double detec, double dist, double angle);
     bool jeTeVois(const Bestiole & b) const override;
-    void toString() override;
+    bool dansDistanceDetection(const Bestiole & b) const;
+    bool dansChampAngulaire(const Bestiole & b) const;
+    void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
+
 
     friend std::ostream& operator<<(std::ostream& flot , const Yeux& yeux) ;
 

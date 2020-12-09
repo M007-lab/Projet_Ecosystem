@@ -10,16 +10,16 @@ Yeux::Yeux(Bestiole* base, double detec, double dist, double angle) {
 
 
 bool Yeux::jeTeVois(const Bestiole & autre) const {
-    bool voisOk = this->capaciteDetection > b.getCamouflage();
-    bool distanceOk = this->dansDistanceDetection(b, this->distance);
-    bool champOk = this->dansChampAngulaire(b, this->angle);
-    return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(b));
+    bool voisOk = this->capaciteDetection > autre.getCamouflage();
+    bool distanceOk = this->dansDistanceDetection(autre);
+    bool champOk = this->dansChampAngulaire(autre);
+    return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(autre));
 }
 
-void Yeux::toString() {
-    std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+void Yeux::toString(std::ostringstream stream) {
+    
+    stream << this ;
+    // std::string str =  stream.str();
 }
 
 void Yeux::draw(UImg& support) {
@@ -36,7 +36,7 @@ void Yeux::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Yeux& yeux) {
-    flot << this->getBase() << "," << this->getName() << "," << yeux.distance << "," << yeux.angle <<< "," << yeux.capaciteDetection << "\n";
+    flot << yeux.getBase() << "," << yeux.getName() << "," << yeux.distance << "," << yeux.angle << "," << yeux.capaciteDetection << "\n";
     return flot ;
 }
 

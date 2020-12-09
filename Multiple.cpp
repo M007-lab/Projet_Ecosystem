@@ -4,7 +4,7 @@
 #include "Kamikaze.h"
 #include "Prevoyante.h"
 
-void Multiple::executeBehavior(Bestiole* bestiole) override{
+void Multiple::executeBehavior(Bestiole* bestiole,Milieu& milieu){
 
 }
 

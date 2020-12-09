@@ -41,6 +41,11 @@ BestioleSimple::~BestioleSimple(){
 //     support.draw_ellipse(xt, yt, Config::getInstance()->rayon*2, Config::getInstance()->rayon/2.5,-this->getOrientation()/M_PI*180.,this->getColor());
 //     support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon,getColor());
 // }
+bool BestioleSimple::jeTeVois( const Bestiole & b ) const
+{
+    return false;
+}
+
 
 double BestioleSimple::getCamouflage() const {
     return 0.0;
@@ -52,6 +57,6 @@ double Bestiole::getProbaMort() const {
 }
 
 //une fois arrivé à BestioleSimple, on a parcouru tous les décorateurs, on ne rajoute donc rien à la liste
-void BestioleSimple::getDecorateurs(std::list<std::string> &decorateurs){
-    return;
-}
+// void BestioleSimple::getDecorateurs(std::list<std::string> &decorateurs){
+//     return;
+// }
