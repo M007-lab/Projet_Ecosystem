@@ -44,12 +44,14 @@ public :                                           // Forme canonique :
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
-   void action( Milieu & monMilieu );
-   void draw( UImg & support );
+   virtual void action( Milieu & monMilieu ) = 0;
+   virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
-   bool jeTeVois( const Bestiole & b ) const;
-   std::list<Bestiole*> getVoisins();
+   virtual bool jeTeVois( const Bestiole & b ) const = 0;
+   std::list<Bestiole*> getVoisins(Milieu & monMilieu);
    void collide(); // Collision between Bestioles
+   virtual Bestiole* clone() = 0;
+   virtual Comportement* getComportement() const = 0;
 
    // Setters
    void setX(int newX) ;

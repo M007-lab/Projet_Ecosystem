@@ -1,12 +1,13 @@
 #include "Kamikaze.h"
 #include <cmath>
 
-void Kamikaze::executerStrat(Bestiole* bestiole) override{
+void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     double distanceMin = 9999999;
     double vitesse = bestiole->getVitesse();
     std::list<Bestiole*> voisins = bestiole->getVoisins();
     double x = bestiole->getX();
     double y = bestiole->getY();
+    double direction;
     double xCible;
     double yCible;
     
@@ -22,24 +23,17 @@ void Kamikaze::executerStrat(Bestiole* bestiole) override{
         }
     }
     //on s'oriente vers la cible
-    if(voisins.size() != 0) {
-        xCible -= x;
-        yCible -= y;
-        direction = -atan2(yCible, xCible);
+    if(voisins.size() != 0){
+        //the principal value of the arc tangent of y/x, expressed in radians.
+        direction = atan2(yCible-y, xCible-x);
+        bestiole->setDirection(direction);
     }
-    //on avance vers la bestiole la plus proche
-    x+=std::round(vitesse*cos(direction));
-    y-=std::round(vitesse*sin(direction));
-
-    bestiole->setX(x);
-    bestiole->setY(y);
-    bestiole->setDirection(direction);
 }
 
-Kamikaze* Kamikaze::dupliquer() const{
+Kamikaze* Kamikaze::dupliquer() const override{
     return new Kamikaze(*this);
 }
 
-std::string Kamikaze::getName(){
+std::string Kamikaze::getName() override{
     return "Kamikaze";
 }

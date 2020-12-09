@@ -1,7 +1,7 @@
 #ifndef OREILLE_H
 #define OREILLE_H
 
-#include "Capteur.h"
+#include "CapteurDecorateur.h"
 
 class Oreille : public Capteur {
     double distance;
