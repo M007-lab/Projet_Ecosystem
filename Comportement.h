@@ -1,5 +1,5 @@
-#ifndef COMPORTEMENT_H
-#define COMPORTEMENT_H
+#ifndef _COMPORTEMENT_H
+#define _COMPORTEMENT_H
 
 #include "Bestiole.h"
 

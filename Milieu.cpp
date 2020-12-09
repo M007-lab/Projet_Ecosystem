@@ -13,7 +13,7 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
    
    
    // create initiale population
-   init_population();
+   // init_population();
 
 
    cout << "const Milieu" << endl;
@@ -30,9 +30,29 @@ Milieu::~Milieu( void )
 
 }
 
-Milieu::init_population()
+void Milieu::init_population()
 {
-   int number = Config::getInstance()->nMax;
+   
+    // listeComportements = {new Gregaire,new Kamikaze, new Peureuse,new Prevoyante,new Multiple};
+    // Chargmeent des pourcentages par Comportment
+    std::vector<double> listeWeights = {Config::getInstance()->pctGregaire,Config::getInstance()->pctKamikaze,Config::getInstance()->pctPeureuse,Config::getInstance()->pctPrevoyante,Config::getInstance()->pctMulti};
+    // On stocke les couleurs dans une liste
+    // std::vector<Color> couleurs = {blue,red,yellow,green,purple};
+    for(unsigned int i=0;i<listeComportements.size();++i)
+    {
+        // mapComportementCouleur[listeComportements[i]] = couleurs[i];
+        mapComportementPct[listeComportements[i]] = listeWeights[i];
+    }
+
+    // initialisation de la population :
+    int n = Config::getInstance()->nMax;
+    // On utilise utils_init pour créer une liste de n comportements qui respecte les poids
+    std::vector<Comportement*> _population = utils_init(listeComportements,listeWeights,n);
+    for (auto element : _population)
+    {
+        Color _color = mapComportementCouleur[element];
+        addBestiole(creator.createBestiole(element,_color.color));
+    }
 
 }
 

@@ -1,5 +1,5 @@
-#ifndef ACCESOIREDECORATEUR_H
-#define ACCESOIREDECORATEUR_H
+// #ifndef _ACCESOIREDECORATEUR_H
+// #define _ACCESOIREDECORATEUR_H
 
 #include "Bestiole.h"
 #include "Comportement.h"
@@ -37,4 +37,4 @@ class AccesoireDecorateur : public Bestiole {
     virtual void getDecorateurs(std::list<std::string> &decorateurs) override;
 };
 
-#endif
+// #endif
