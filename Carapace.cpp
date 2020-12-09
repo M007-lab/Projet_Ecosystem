@@ -15,10 +15,10 @@ double Carapace::getVitesse() const {
   return (1/this->coefCarapaceVitesse) * (this->getBase()->getVitesse());
 }
 
-void Carapace::toString() {
-    std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+void Carapace::toString(std::ostringstream stream) {
+    
+    stream << this ;
+    // std::string str =  stream.str();
 }
 
 void Carapace::draw(UImg& support) {
@@ -34,7 +34,7 @@ void Carapace::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) {
-    flot << this->getBase() << "," << this->getName() << "," << carapace.coefCarapaceMort << "," << carapace.coefCarapaceVitesse << "\n";
+    flot << carapace.getBase() << "," << carapace.getName() << "," << carapace.coefCarapaceMort << "," << carapace.coefCarapaceVitesse << "\n";
     return flot ;
 }
 

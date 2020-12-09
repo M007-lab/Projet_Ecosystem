@@ -10,11 +10,11 @@ private:
 
 public:
     Carapace(Bestiole* base, double coefMort, double coefVitesse);
-    double getProbaMort() override;
-    double getVitesse() override;
-    void toString() override;
+    double getProbaMort() const override;
+    double getVitesse() const override;
+    void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 
-    friend std::ostream& operator<<(std::ostream& flot , const Nageoire& nageoire) ;
+    friend std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) ;
 };
 #endif

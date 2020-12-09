@@ -10,10 +10,10 @@ double Camouflage::getCamouflage() const {
   return this->capaciteCamouflage + this->getBase()->getCamouflage();
 }
 
-void Camouflage::toString() {
+void Camouflage::toString(std::ostringstream stream) {
     std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+    stream << this ;
+    // std::string str =  stream.str();
 }
 
 void Camouflage::draw(UImg& support) {
@@ -22,6 +22,6 @@ void Camouflage::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Camouflage& camouflage) {
-    flot << this->getBase() << "," << this->getName() << "," << camouflage.capaciteCamouflage << "\n";
+    flot << camouflage.getBase() << "," << camouflage.getName() << "," << camouflage.capaciteCamouflage << "\n";
     return flot ;
 }

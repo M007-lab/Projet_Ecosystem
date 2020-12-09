@@ -12,7 +12,7 @@
 using namespace std;
 
 
-class Milieu;
+
 
 
 class Bestiole
@@ -49,25 +49,25 @@ public :                                           // Forme canonique :
    virtual void toString(iostream & out) = 0;
    virtual bool jeTeVois( const Bestiole & b ) const;
    std::list<Bestiole*> getVoisins(Milieu & monMilieu);
-   void collide(); // Collision between Bestioles
+   virtual void collide(); // Collision between Bestioles
    virtual Bestiole* clone() = 0;
    virtual Comportement* getComportement() const = 0;
 
    // Setters
-   void setX(int newX) ;
-   void setY(int newY) ;
-   void setVitesse(double newVitesse) ;
-   void setOrientation(double newOrientation) ;
-   void setAge(int newAge) ;
+   virtual void setX(int newX) ;
+   virtual void setY(int newY) ;
+   virtual void setVitesse(double newVitesse) ;
+   virtual void setOrientation(double newOrientation) ;
+   virtual void setAge(int newAge) ;
 
    //getters
-   int getX() const;
-   int getY() const;
-   int getIdentite() const;
-   int getAge() const;
-   int getAgeMax() const;
-   double getVitesse() const;
-   double getOrientation() const;
+   virtual int getX() const;
+   virtual int getY() const;
+   virtual int getIdentite() const;
+   virtual int getAge() const;
+   virtual int getAgeMax() const;
+   virtual double getVitesse() const;
+   virtual double getOrientation() const;
    void initCoords( int xLim, int yLim );
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
    virtual double getProbaMort() const = 0;
@@ -76,10 +76,10 @@ public :                                           // Forme canonique :
    virtual unsigned char * getColor() const;
    virtual unsigned char* getLightColor() const;
 
-   double getDistanceA(const Bestiole* b) const;
-   bool dansDistanceDetection(const Bestiole & b, double distance) const;
-   double between0and2PI(double angle) const;
-   bool dansChampsAngulaire(const Bestiole & b, double champ) const;
+   virtual double getDistanceA(const Bestiole* b) const;
+   virtual bool dansDistanceDetection(const Bestiole & b, double distance) const;
+   virtual double between0and2PI(double angle) const;
+   virtual bool dansChampsAngulaire(const Bestiole & b, double champ) const;
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 

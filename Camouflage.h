@@ -9,8 +9,8 @@ private:
 
 public:
     Camouflage(Bestiole* base, double capacite);
-    double getCamouflage() override;
-    void toString() override;
+    double getCamouflage() const override;
+    void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 
     friend std::ostream& operator<<(std::ostream& flot , const Camouflage& camouflage) ;

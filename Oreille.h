@@ -11,7 +11,7 @@ class Oreille : public CapteurDecorateur {
 public :
     Oreille(Bestiole* base, double detec, double dist);
     bool jeTeVois(const Bestiole & b) const override;
-    void toString() override;
+    void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 
     friend std::ostream& operator<<(std::ostream& flot , const Oreille& oreille) ;

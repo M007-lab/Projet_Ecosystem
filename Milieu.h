@@ -4,7 +4,7 @@
 
 #include "UImg.h"
 #include "Bestiole.h"
-#include "CreateurBestiole.h"
+#include "FactoryBestiole.h"
 // #include "Createur.h"
 #include <iostream>
 #include <vector>
@@ -50,7 +50,7 @@ private :
    std::vector<Comportement *> listeComportements;
    std::map<Comportement*,Color> mapComportementColor;
    std::map<Comportement*, double> mapComportementWeight;
-   CreateurBestiole creator = CreateurBestiole() ;
+   FactoryBestiole creator = FactoryBestiole() ;
 
 public :
    Milieu( int _width, int _height );

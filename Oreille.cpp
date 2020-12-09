@@ -8,10 +8,10 @@ Oreille::Oreille(Bestiole* base, double detec, double dist) {
     this->distance = dist;
 }
 
-void Oreille::toString() {
+void Oreille::toString(std::ostringstream stream) {
     std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+    stream  << this ;
+    //std::string str =  stream.str();
 }
 
 bool Oreille::jeTeVois(const Bestiole & b) const {
