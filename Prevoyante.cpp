@@ -43,6 +43,10 @@ void Prevoyante::executeBehavior(Bestiole* bestiole) override{
     }
 }
 
+Prevoyante::~Prevoyante(){
+
+}
+
 Prevoyante* Prevoyante::dupliquer() const{
     return new Prevoyante(*this);
 }
