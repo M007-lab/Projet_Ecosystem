@@ -50,6 +50,10 @@ Bestiole::Bestiole( const Bestiole & b )
 
 }
 
+Bestiole::Bestiole(int x,int y,int ageMax,double vitesse,double orientation)
+{
+   x = x; y = y; ageMax = ageMax; vitesse = vitesse; orientation = orientation;
+}
 
 Bestiole::~Bestiole( void )
 {
@@ -120,7 +124,7 @@ void Bestiole::collide()
     if(testMort<=this->getProbaMort())
     {
         //pour tuer la bestiole, on met son âge au maximum
-        setAge(Config::getInstance()->maxAge);
+        setAge(Config::getInstance()->ageMax);
     }
     else
     {
@@ -154,6 +158,19 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 
+<<<<<<< HEAD
+// bool Bestiole::jeTeVois( const Bestiole & b ) const
+// {
+
+//    double         dist;
+
+
+//    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   
+//    return ( dist <= LIMITE_VUE);
+
+// }
+
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
     std::list<CapteurDecorateur> bestioleCapteurs = this->getCapteurDecorateurs();
@@ -174,9 +191,20 @@ std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
               voisins.push_back(b);
            }
 
-    }
-   return voisins;
-}
+
+// std::list<Bestiole> Bestiole::getVoisins(Milieu & monMilieu)
+// {   
+//     std::list<Bestiole> voisins;
+//     for (auto b : monMilieu.getListeBestioles())
+//     {
+//            if (jeTeVois(b) && !(*this == b)) // == is overloaded based on Identite
+//            {
+//               voisins.push_back(b);
+//            }
+
+//     }
+//    return voisins;
+// }
 
 
 int Bestiole::getIdentite() const {
@@ -214,11 +242,14 @@ double Bestiole::getVitesse() const {
 
 
 
+<<<<<<< HEAD
+=======
 double getDistanceA(const Bestiole* b) const {
     double x_diff = this->getX() - b->getX();
     double y_diff = this->getY() - b->getY();
     return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
 }
+>>>>>>> 735f446b4822c7821ee1faedfbde2fc1fee797f7
 //setters
 void Bestiole::setX(int newX) {
     x = newX;
@@ -234,36 +265,4 @@ void Bestiole::setOrientation(double newOrientation) {
 }
 void Bestiole::setAge(int newAge) {
     age = newAge;
-}
-
-bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const {
-    double dist;
-    dist = this.getDistanceA(b);
-    return ( dist <= distance );
-}
-
-double between0and2PI(double angle)
-{
-
-    double PI = 3.14159265358979323844;
-    while (angle > 2.0*PI)
-        angle -= 2.0*PI;
-    while (angle < 0)
-        angle += 2.0*PI;
-    return angle;
-}
-
-bool Bestiole::dansArcVue(const Bestiole & b, double variance) const {
-    double precision = 0.0001;
-    double angle = between0and2PI(-atan2(b.getY()-this->getY(),b.getX()-this->getX()));
-    double end = between0and2PI(this->getOrientation()+variance/2);
-    double start = between0and2PI(this->getOrientation()-variance/2);
-    if(std::abs(start - end) < precision)
-        return false;
-    if((end >= angle)&&(angle>=start))
-        return true;
-    if((end <= angle) && (angle <= start)) {
-        return true;
-    }
-    return false;
 }

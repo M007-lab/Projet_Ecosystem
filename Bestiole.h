@@ -40,20 +40,25 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
+   
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
+   Bestiole(int x,int y,int ageMax,double vitesse,double orientation);
    ~Bestiole( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
+   
+   // to override                                              // Operateur d'affectation binaire par defaut
    virtual void action( Milieu & monMilieu ) = 0;
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
-   virtual bool jeTeVois( const Bestiole & b ) const = 0;
-   std::list<Bestiole*> getVoisins(Milieu & monMilieu);
+   // virtual bool jeTeVois( const Bestiole & b ) const = 0;
+   virtual double getVitesse() const = 0;
+   std::list<Bestiole> getVoisins(Milieu & monMilieu);
    void collide(); // Collision between Bestioles
    virtual Bestiole* clone() = 0;
-   virtual Comportement* getComportement() const = 0;
+   // virtual Comportement* getComportement() const = 0;
 
    // Setters
+    // standard
    void setX(int newX) ;
    void setY(int newY) ;
    void setVitesse(double newVitesse) ;
@@ -61,6 +66,7 @@ public :                                           // Forme canonique :
    void setAge(int newAge) ;
 
    //getters
+    // standard
    int getX() const;
    int getY() const;
    int getIdentite() const;
@@ -69,16 +75,17 @@ public :                                           // Forme canonique :
    double getVitesse() const;
    double getOrientation() const;
    void initCoords( int xLim, int yLim );
+
+    // to override
+   virtual void getDecorateurs(std::list<std::string> &decorateurs) = 0; // to override in Decorator class 
+
    virtual std::list<CapteurDecorateur> getCapteursDecorateurs() = 0;
    virtual std::list<CapteurDecorateur> getAccessoireDecorateurs() = 0;// to override in Decorator class
+
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
    virtual double getProbaMort() const =0;
    virtual double getVitesseCoeff() const =0;
    virtual double getCamouflage() const = 0;
-   double getDistanceA(const Bestiole* b) const;
-
-   bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const;
-    double between0and2PI(double angle)
    
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
