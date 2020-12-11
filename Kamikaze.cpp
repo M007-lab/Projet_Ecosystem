@@ -30,6 +30,10 @@ void Kamikaze::executeBehavior(Bestiole* bestiole) override{
     }
 }
 
+Kamikaze::~Kamikaze(){
+
+}
+
 Kamikaze* Kamikaze::dupliquer() const override{
     return new Kamikaze(*this);
 }
