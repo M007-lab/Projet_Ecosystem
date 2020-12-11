@@ -18,7 +18,6 @@
         return ( (jeVois && distanceOk && dansArc) || this->getBase()->jeTeVois(autre));
     }
 
-
     void Yeux::draw(UImg& support) {
         double angleMin = this->getOrientation() - this->angle/2;
         double angleMax = this->getOrientation() + this->angle/2;

@@ -3,21 +3,12 @@
 Nageoire::Nageoire(Bestiole* base, double coefVitesse) {
     this->name = "Nageoire";
     this->base = base;
-    this->coefNageoire = val;
+    this->coefNageoire = coefVitesse;
     this->accessoiresDecorateurs.push_back(this);
 }
 
-
 double Nageoire::getVitesse() const {
     return this->coefNageoire * (this->getBase()->getVitesse());
-}
-
-EspeceA* Nageoire::cloner() {
-    return new Nageoire(this->getBase()->cloner(), this->coefVitesse);
-}
-
-double Nageoire::getVitesseCoeff() const {
-    return this->coefVitesse;
 }
 
 void Nageoire::draw(UImg& support) {

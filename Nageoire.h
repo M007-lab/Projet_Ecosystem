@@ -10,7 +10,6 @@ private:
 public:
     Nageoire(Bestiole* base, double coefVitesse);
     double getVitesse() override;
-    virtual void draw(UImg& support);
-
+    void draw(UImg& support);
 
 };

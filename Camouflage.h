@@ -9,9 +9,7 @@ private:
 public:
     Camouflage(Bestiole* base,double capacite);
     double getCamouflage() ;
-    virtual void draw(UImg& support);
-
+    void draw(UImg& support);
 
 };
-
 #endif

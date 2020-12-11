@@ -5,7 +5,7 @@ Camouflage::Camouflage(Bestiole* base, double val) {
   this->name = "Camouflage";
   this->base = base;
   this->capaciteCamouflage = val;
-    this->accessoiresDecorateurs.push_back(this);
+  this->accessoiresDecorateurs.push_back(this);
 
 }
 
