@@ -8,8 +8,7 @@ private:
     double capaciteCamouflage;
 public:
     Camouflage(Bestiole* base,double capacite);
-    double getCamouflage() override;
-    virtual Bestiole* cloner();
+    double getCamouflage() ;
     virtual void draw(UImg& support);
 
 

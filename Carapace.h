@@ -6,15 +6,13 @@
 class Carapace:public AccesoireDecorateur
 {
 private:
-    double coefReducMort;
-    double coefVitesse;
+    double coefCarapaceMort;
+    double coefCarapaceVitesse;
 public:
-    Carapace(Bestiole* base,double coefMort, double coefVitesse);
-    double getCamouflage() override;
+    Carapace(Bestiole* base, double coefMort, double coefVitesse);
     double getProbaMort() override;
     double getVitesse() override;
-    virtual Bestiole* cloner();
-    virtual void draw(UImg& support);
+    void draw(UImg& support);
 
 
 };

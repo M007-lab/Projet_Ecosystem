@@ -156,14 +156,12 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-
-   double         dist;
-
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   
-   return ( dist <= LIMITE_VUE);
-
+    std::list<CapteurDecorateur> bestioleCapteurs = this->getCapteurDecorateurs();
+    for (auto capteur : bestioleCapteurs) {
+        if (isYeux(capteur)){ Yeux * yeux = castYeux(capteur)}
+        if (isOreille(capteur)){ Oreille * oreille = castOreille(capteur)}
+    }
+    return (yeux->jeTeVois(b) || oreille->jeTeVois(b))
 }
 
 std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
@@ -171,7 +169,7 @@ std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
     std::list<Bestiole*> voisins;
     for (auto b : monMilieu.getListeBestioles())
     {
-           if (jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
+           if (this->jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
            {
               voisins.push_back(b);
            }
@@ -217,8 +215,8 @@ double Bestiole::getVitesse() const {
 
 
 double getDistanceA(const Bestiole* b) const {
-    const double x_diff = this->getX() - b->getX();
-    const double y_diff = this->getY() - b->getY();
+    double x_diff = this->getX() - b->getX();
+    double y_diff = this->getY() - b->getY();
     return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
 }
 //setters

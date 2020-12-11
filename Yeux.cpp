@@ -7,7 +7,7 @@
         this->capaciteDetection = detec;
         this->angle = angle;
         this->distance = dist;
-        this->capteursDecorateurs.push_back(this);
+        this->capteurDecorateurs.push_back(this);
     }
 
 

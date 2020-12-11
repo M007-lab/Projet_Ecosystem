@@ -5,14 +5,12 @@ Camouflage::Camouflage(Bestiole* base, double val) {
   this->name = "Camouflage";
   this->base = base;
   this->capaciteCamouflage = val;
+    this->accessoiresDecorateurs.push_back(this);
+
 }
 
 double Camouflage::getCamouflage() const {
   return this->capaciteCamouflage + this->getBase()->getCamouflage();
-}
-
-Bestiole* Camouflage::cloner() {
-  return new Camouflage(this->getBase()->cloner(), this->capaciteCamouflage);
 }
 
 void Camouflage::draw(UImg& support) {

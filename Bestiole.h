@@ -69,8 +69,8 @@ public :                                           // Forme canonique :
    double getVitesse() const;
    double getOrientation() const;
    void initCoords( int xLim, int yLim );
-   virtual  getCapteursDecorateurs() = 0;
-   virtual getAccessoireDecorateurs() = 0// to override in Decorator class
+   virtual std::list<CapteurDecorateur> getCapteursDecorateurs() = 0;
+   virtual std::list<CapteurDecorateur> getAccessoireDecorateurs() = 0;// to override in Decorator class
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
    virtual double getProbaMort() const =0;
    virtual double getVitesseCoeff() const =0;
