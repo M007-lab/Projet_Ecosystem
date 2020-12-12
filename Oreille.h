@@ -3,18 +3,18 @@
 
 #include "CapteurDecorateur.h"
 
-class Oreille : public Capteur {
+class Oreille : public CapteurDecorateur {
     double distance;
-    double angle = 360 const;
+    const double angle;
     double capaciteDetection;
 
 public :
-    Oreille(BestioleSimple* base, double detec, double dist);
-    bool jeTeVois(const Bestiole & autre) const override;
-    void draw(UImg& support);
-    bool isOreille(CapteurDecorateur *capDec);// Verify if an element of the list capteurDecorateurs is an instance of the Oreille
-    Oreille* castOreille(CapteurDecorateur *capDec); // DownCast a CapteurDecorateur to Oreille
+    Oreille(Bestiole* base, double detec, double dist);
+    bool jeTeVois(const Bestiole & b) const override;
+    void toString() override;
+    void draw(UImg& support) override;
 
+    friend std::ostream& operator<<(std::ostream& flot , const Oreille& oreille) ;
 };
 
 #endif

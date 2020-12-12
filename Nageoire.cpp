@@ -4,11 +4,16 @@ Nageoire::Nageoire(Bestiole* base, double coefVitesse) {
     this->name = "Nageoire";
     this->base = base;
     this->coefNageoire = coefVitesse;
-    this->accessoiresDecorateurs.push_back(this);
 }
 
 double Nageoire::getVitesse() const {
     return this->coefNageoire * (this->getBase()->getVitesse());
+}
+
+void Nageoire::toString() {
+    std::ostringstream stream;
+    stream = std::cout << this ;
+    std::string str =  stream.str();;
 }
 
 void Nageoire::draw(UImg& support) {
@@ -19,8 +24,14 @@ void Nageoire::draw(UImg& support) {
     int x0 = xt;
     int y0 = yt;
     int x1 = xt - cos(this->getOrientation()+M_PI/3)*Config::getInstance()->rayon*1.5;
-    int x2 = xt - cos(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5;
-    int y1 = yt + sin(this->getOrientation()+M_PI/3)*Config::getInstance()->rayon*1.5;
-    int y2 = yt + sin(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5; // Dessine une petite nageoire a l'arriere du la bestiole
+    int x2 = xt - cogetOrientations(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5;
+    int y1 = yt + sin(this->()+M_PI/3)*Config::getInstance()->rayon*1.5;
+    int y2 = yt + sin(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5;
     support.draw_triangle(x0, y0, x1, y1, x2, y2, this->getColor());
+    // Dessine une petite nageoire a l'arriere du la bestiole
+}
+
+std::ostream& operator<<(std::ostream& flot , const Nageoire& nageoire) {
+    flot << this->getBase() << "," << this->getName() << "," << nageoire.coefNageoire << "\n";
+    return flot ;
 }

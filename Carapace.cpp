@@ -1,30 +1,40 @@
 #include "Carapace.h"
 
-
 Carapace::Carapace(Bestiole* base, double coefMort, double coefVitesse) {
     this->name = "Carapace";
     this->base = base;
     this->coefCarapaceVitesse = coefVitesse;
     this->coefCarapaceMort = coefMort;
-    this->accessoiresDecorateurs.push_back(this);
+}
+
+double Carapace::getProbaMort()  const {
+    return (1/this->coefCarapaceMort) * (this->getBase()->getProbaMort());
 }
 
 double Carapace::getVitesse() const {
   return (1/this->coefCarapaceVitesse) * (this->getBase()->getVitesse());
 }
 
+void Carapace::toString() {
+    std::ostringstream stream;
+    stream = std::cout << this ;
+    std::string str =  stream.str();
+}
 
-void Nageoire::draw(UImg& support) {
+void Carapace::draw(UImg& support) {
     this->getBase()->draw(support);
+    unsigned char col[3];
+    col[0] = 0;
+    col[1] = 0;
+    col[2] = 0;
+    // Dessine un cercle noir autour de la besitole
+    support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon + 1, col, 1.0f, 0xFFFFFFFF);
+    support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon + 2, col, 1.0f, 0xFFFFFFFF);
+    support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon + 3, col, 1.0f, 0xFFFFFFFF);
+}
 
-    double xt = (double) this->getX() - cos(this->getOrientation())*Config::getInstance()->rayon*1.5;
-    double yt = (double) this->getY() + sin(this->getOrientation())*Config::getInstance()->rayon*1.5;
-    int x0 = xt;
-    int y0 = yt;
-    int x1 = xt - cos(this->getOrientation()+M_PI/3)*Config::getInstance()->rayon*1.5;
-    int x2 = xt - cos(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5;
-    int y1 = yt + sin(this->getOrientation()+M_PI/3)*Config::getInstance()->rayon*1.5;
-    int y2 = yt + sin(this->getOrientation()-M_PI/3)*Config::getInstance()->rayon*1.5; /
-    support.draw_triangle(x0, y0, x1, y1, x2, y2, this->getColor());
+std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) {
+    flot << this->getBase() << "," << this->getName() << "," << carapace.coefCarapaceMort << "," << carapace.coefCarapaceVitesse << "\n";
+    return flot ;
 }
 

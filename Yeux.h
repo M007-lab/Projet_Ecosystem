@@ -1,19 +1,20 @@
 #ifndef YEUX_H
 #define YEUX_H
 
-#include "Capteur.h"
+#include "CapteurDecorateur.h"
 
-class Yeux : public Capteur {
+class Yeux : public CapteurDecorateur {
     double distance;
     double angle ;
     double capaciteDetection;
 
 public :
-    Yeux(BestioleSimple* base, double detec, double dist, double angle);
-    bool jeTeVois(const Bestiole & autre) const override;
-    void draw(UImg& support);
-    bool isYeux(CapteurDecorateur *capDec);// Verify if an element of the list capteurDecorateurs is an instance of the Yeux
-    Yeux* castYeux(CapteurDecorateur *capDec); // DownCast a CapteurDecorateur to Oreille
+    Yeux(Bestiole* base, double detec, double dist, double angle);
+    bool jeTeVois(const Bestiole & b) const override;
+    void toString() override;
+    void draw(UImg& support) override;
+
+    friend std::ostream& operator<<(std::ostream& flot , const Yeux& yeux) ;
 
 };
 
