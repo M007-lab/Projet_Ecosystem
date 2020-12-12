@@ -14,6 +14,12 @@ void Peureuse::executeBehavior(Bestiole* bestiole) override{
     }
 }
 
+
+Peureuse::~Peureuse(){
+
+}
+
+
 Peureuse* Peureuse::dupliquer() const{
     return new Peureuse(*this);
 }

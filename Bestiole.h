@@ -34,7 +34,7 @@ protected :
    double            age;
    
 
-   T               * couleur[3] = {0,0,0} ;
+   T               * couleur ;
 
 private :
    void bouge( int xLim, int yLim );
@@ -71,7 +71,6 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
    virtual double getProbaMort() const = 0;
-   virtual double getVitesseCoeff() const = 0;
    virtual double getCamouflage() const = 0;
 
    virtual unsigned char * getColor() const;
