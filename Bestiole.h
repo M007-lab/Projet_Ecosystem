@@ -25,7 +25,7 @@ private :
 
    static int              next;
 
-private :
+protected :
    int               identite;
    int               x, y;
    double            cumulX, cumulY;
@@ -34,7 +34,7 @@ private :
    double            age;
    
 
-   T               * couleur;
+   T               * couleur ;
 
 private :
    void bouge( int xLim, int yLim );
@@ -44,12 +44,14 @@ public :                                           // Forme canonique :
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
-   void action( Milieu & monMilieu );
-   void draw( UImg & support );
+   virtual void action( Milieu & monMilieu ) = 0;
+   virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
-   bool jeTeVois( const Bestiole & b ) const;
-   std::list<Bestiole*> getVoisins();
+   virtual bool jeTeVois( const Bestiole & b ) const;
+   std::list<Bestiole*> getVoisins(Milieu & monMilieu);
    void collide(); // Collision between Bestioles
+   virtual Bestiole* clone() = 0;
+   virtual Comportement* getComportement() const = 0;
 
    // Setters
    void setX(int newX) ;
@@ -67,12 +69,17 @@ public :                                           // Forme canonique :
    double getVitesse() const;
    double getOrientation() const;
    void initCoords( int xLim, int yLim );
-   virtual void getDecorateurs(std::list<std::string> &decorateurs) = 0; // to override in Decorator class 
    virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
-   virtual double getProbaMort() const =0;
-   virtual double getVitesseCoeff() const =0;
+   virtual double getProbaMort() const = 0;
    virtual double getCamouflage() const = 0;
-   
+
+   virtual unsigned char * getColor() const;
+   virtual unsigned char* getLightColor() const;
+
+   double getDistanceA(const Bestiole* b) const;
+   bool dansDistanceDetection(const Bestiole & b, double distance) const;
+   double between0and2PI(double angle) const;
+   bool dansChampsAngulaire(const Bestiole & b, double champ) const;
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 

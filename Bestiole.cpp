@@ -136,12 +136,11 @@ void Bestiole::collide()
 void Bestiole::draw( UImg & support )
 {
 
-   double         xt = x + cos( orientation )*AFF_SIZE/2.1;
-   double         yt = y - sin( orientation )*AFF_SIZE/2.1;
+   double xt = x + cos( orientation )*AFF_SIZE/2.;
+   double yt = y - sin( orientation )*AFF_SIZE/2.;
 
-
-   support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
-   support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
+   support.draw_ellipse(x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180.,couleur);
+   support.draw_circle(xt, yt, AFF_SIZE/2., couleur );
 
 }
 
@@ -156,22 +155,15 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-
-   double         dist;
-
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   
-   return ( dist <= LIMITE_VUE);
-
+    return false;
 }
 
-std::list<Bestiole*> Bestiole::getVoisins()
+std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
 {   
     std::list<Bestiole*> voisins;
-    for (auto b : Milieu::getListeBestiole())
+    for (auto b : monMilieu.getListeBestioles())
     {
-           if (jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
+           if (this->jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
            {
               voisins.push_back(b);
            }
@@ -198,28 +190,26 @@ double Bestiole::getOrientation() const {
 }
 
 int Bestiole::getAgeMax() const {
-  return ageMax;
+  return Config::getInstance()->ageMax;
 }
 int Bestiole::getAge() const {
   return age;
 }
 
 unsigned char* Bestiole::getColor() const {
-  return (unsigned char*) color;
+    return (unsigned char*) this->couleur;
 }
 
-
+unsigned char* Bestiole::getLightColor() const { // Renvoie une couleur entre le blanc/gris et al couleur de la bestiole
+    unsigned char * col = (unsigned char*) this->couleur;
+    col[0] = 3*col[0]/5 + 60;
+    col[1] = 3*col[1]/5 + 60;
+    col[2] = 3*col[2]/5 + 60;
+    return col;
+}
 
 double Bestiole::getVitesse() const {
   return vitesse;
-}
-
-double Bestiole::getCamouflage() const {
-  return 0.0;
-}
-
-double Bestiole::getProbaMort() const {
-   return Config::getInstance()->probaMortCol;
 }
 
 //setters
@@ -237,4 +227,42 @@ void Bestiole::setOrientation(double newOrientation) {
 }
 void Bestiole::setAge(int newAge) {
     age = newAge;
+}
+
+
+double Bestiole::getDistanceA(const Bestiole* b) const {
+    double x_diff = this->getX() - b->getX();
+    double y_diff = this->getY() - b->getY();
+    return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
+}
+
+bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const {
+    double dist = this.getDistanceA(b);
+    return ( dist <= distance );
+}
+
+double Bestiole::between0and2PI(double angle) const{
+    while (angle > 2.0*PI)
+        angle -= 2.0*PI;
+    while (angle < 0)
+        angle += 2.0*PI;
+    return angle;
+}
+
+bool Bestiole::dansChampsAngulaire(const Bestiole & b, double champ) const {
+    double precision = 0.0001; //A voir
+    double angle = between0and2PI(atan2(b.getY()-this->getY(),b.getX()-this->getX()));
+    double angleFin = between0and2PI(this->getOrientation() + champ/2);
+    double angleStart = between0and2PI(this->getOrientation() - champ/2);
+
+    // A voir
+    if(std::abs(angleStart - angleFin) < precision)
+        return false;
+
+    if((angleFin >= angle) && (angle>=angleStart))
+        return true;
+    if((angleFin <= angle) && (angle <= angleStart)) {
+        return true;
+    }
+    return false;
 }

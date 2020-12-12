@@ -1,20 +1,20 @@
 #ifndef CARAPACE_H
 #define CARAPACE_H
 
-#include "AccesoireDecorateur.h"
+#include "AccessoireDecorateur.h"
 
-class Carapace:public AccesoireDecorateur
-{
+class Carapace : public AccessoireDecorateur{
 private:
-    double coefReducMort;
-    double coefVitesse;
+    double coefCarapaceMort;
+    double coefCarapaceVitesse;
+
 public:
-    Carapace(Bestiole* base,double coefMort, double coefVitesse);
-    double getCamouflage() override;
+    Carapace(Bestiole* base, double coefMort, double coefVitesse);
     double getProbaMort() override;
     double getVitesse() override;
-    virtual Bestiole* cloner();
-    virtual void draw(UImg& support);
+    void toString() override;
+    void draw(UImg& support) override;
 
-
+    friend std::ostream& operator<<(std::ostream& flot , const Nageoire& nageoire) ;
 };
+#endif

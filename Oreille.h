@@ -1,16 +1,20 @@
 #ifndef OREILLE_H
 #define OREILLE_H
 
-#include "Capteur.h"
+#include "CapteurDecorateur.h"
 
-class Oreille : public Capteur {
-    Oreille(){};
+class Oreille : public CapteurDecorateur {
+    double distance;
+    const double angle;
+    double capaciteDetection;
+
 public :
-    Oreille(BestioleSimple* base, double detec, double dist);
-    bool jeTeVois(const Bestiole & autre) const override;
-    virtual BestioleSimple* cloner();
-    virtual void draw(UImg& support);
+    Oreille(Bestiole* base, double detec, double dist);
+    bool jeTeVois(const Bestiole & b) const override;
+    void toString() override;
+    void draw(UImg& support) override;
 
+    friend std::ostream& operator<<(std::ostream& flot , const Oreille& oreille) ;
 };
 
 #endif

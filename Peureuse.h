@@ -1,12 +1,12 @@
-#ifndef KAMIKAZE
-#define KAMIKAZE
+#ifndef PEUREUSE
+#define PEUREUSE
 
 #include "Comportement.h"
-class Kamikaze:public Comportement{
+class Peureuse:public Comportement{
 public:
     virtual void executeBehavior(Bestiole* bestiole) override;
-    virtual Kamikaze* dupliquer() const override;
-     ~Kamikaze(){};
+    virtual Peureuse* dupliquer() const override;
+     ~Peureuse(){};
     virtual std::string getName() override;
 };
 

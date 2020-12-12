@@ -1,21 +1,27 @@
 #include "Camouflage.h"
-#include <iostream>
 
-Camouflage::Camouflage(Bestiole* base, double val) {
+Camouflage::Camouflage(Bestiole* base, double capacite) {
   this->name = "Camouflage";
   this->base = base;
-  this->capaciteCamouflage = val;
+  this->capaciteCamouflage = capacite;
 }
 
 double Camouflage::getCamouflage() const {
   return this->capaciteCamouflage + this->getBase()->getCamouflage();
 }
 
-Bestiole* Camouflage::cloner() {
-  return new Camouflage(this->getBase()->cloner(), this->capaciteCamouflage);
+void Camouflage::toString() {
+    std::ostringstream stream;
+    stream = std::cout << this ;
+    std::string str =  stream.str();
 }
 
 void Camouflage::draw(UImg& support) {
-  this->getBase()->draw(support);
-  support.draw_circle(this->getPosition(),Config::getInstance()->rayon - 3,getLightColor()); // Dessine un cerle gris au sein de la besitole
+    this->getBase()->draw(support);
+    support.draw_circle(this->getX(),this->getY(), Config::getInstance()->rayon - 3, this->getLightColor()); // Dessine un cerle gris au sein de la besitole
+}
+
+std::ostream& operator<<(std::ostream& flot , const Camouflage& camouflage) {
+    flot << this->getBase() << "," << this->getName() << "," << camouflage.capaciteCamouflage << "\n";
+    return flot ;
 }

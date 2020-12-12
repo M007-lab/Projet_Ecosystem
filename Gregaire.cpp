@@ -1,36 +1,38 @@
 
 #include "Gregaire.h"
-void Gregaire::executeBehavior(Bestiole* bestiole){
-     double directMoyenne;
-     std::list<Bestiole*> voisins = bestiole->getVoisins();
+#include <cmath>
+
+void Gregaire::executeBehavior(Bestiole* bestiole) override{
+    double directionMoyenne;
+    double vitesse = bestiole->getVitesse();
+    std::list<Bestiole*> voisins = bestiole->getVoisins();
      
 
     //calcul de l'direction moyenne des bestioles voisines
     if(voisins.size()!=0) {
-        directMoyenne = 0;
+        directionMoyenne = 0;
         for (auto b : voisins) {
-            directMoyenne += b->getOrientation();
+            directionMoyenne += b->getDirection();
         }
-        directMoyenne /= voisins.size();
+        directionMoyenne /= voisins.size();
     }
     //si elle a pas de voisins, la direction reste la même
     else{
-        directMoyenne = bestiole->getOrientation();
+        directionMoyenne = bestiole->getDirection();
     }
-    //calcul de na nouvelle position
-    bestiole->setX(bestiole->getX()+std::round(vitesse*cos(directMoyenne)));
-    bestiole->setY(bestiole->getY()-std::round(vitesse*sin(directMoyenne));
-    // while(directMoyenne>2*PI){
-    //     directMoyenne-=2*PI;
-    // }
-    // while(directMoyenne>2*PI){
-    //     directMoyenne-=2*PI;
-    // }
-    // while(directMoyenne<0){
-    //     directMoyenne+=2*PI;
-    // }
-    bestiole->setDirection(directMoyenne);
+    
+    bestiole->setDirection(directionMoyenne);
 }
-Comportement* Gregaire::dupliquer() const override;
-~Gregaire(){};
-std::string Gregaire::getName() override;
+
+Comportement* Gregaire::dupliquer() const {
+    return new Gregaire(*this);
+}
+
+Gregaire::~Gregaire(){
+
+}
+
+std::string Gregaire::getName() 
+{
+    return "Grégaire";
+}

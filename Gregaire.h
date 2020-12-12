@@ -1,8 +1,13 @@
+#ifndef GREGAIRE_H
+#define GREGAIRE_H
+
 #include "Comportement.h"
 class Gregaire:public Comportement{
 public:
-    void executeBehavior(Bestiole* bestiole) override;
-    Comportement* dupliquer() const override;
+    virtual void executeBehavior(Bestiole* bestiole) override;
+    virtual Gregaire* dupliquer() const override;
      ~Gregaire(){};
-    std::string getName() override;
+    virtual std::string getName() override;
 };
+
+#endif

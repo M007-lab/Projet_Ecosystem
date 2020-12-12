@@ -2,6 +2,9 @@
 
 #include "Milieu.h"
 
+#include <iostream>
+#include <iomanip>
+#include <ctime>
 
 Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
 {
@@ -22,14 +25,22 @@ Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( 
 
 Aquarium::~Aquarium( void )
 {
-
+   report();
    delete flotte;
-
    cout << "dest Aquarium" << endl;
 
 }
 
-
+void Aquarium::report()
+{
+   std::stringstream filename;
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+   filename << "Rapport_Simulation_" <<std::put_time(&tm, "%d-%m-%Y %H-%M-%S")  << ".txt";
+   std::ofstream myfile;
+   myfile.open(filename.str());
+   flotte->report(myfile);
+}
 void Aquarium::run( void )
 {
 
@@ -45,7 +56,9 @@ void Aquarium::run( void )
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) close();
       }
-
+     if(button()&1){
+          flotte->killBestiole(mouse_x(),mouse_y());
+      }
       flotte->step();
       display( *flotte );
 
