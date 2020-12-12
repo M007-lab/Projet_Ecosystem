@@ -1,4 +1,4 @@
-#include "AccessoireDetecteur.h"
+#include "AccessoireDecorateur.h"
 
 Bestiole* AccessoireDecorateur::getBase() const{
     return this->base;

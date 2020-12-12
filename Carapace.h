@@ -1,9 +1,9 @@
 #ifndef CARAPACE_H
 #define CARAPACE_H
 
-#include "AccesoireDecorateur.h"
+#include "AccessoireDecorateur.h"
 
-class Carapace : public AccesoireDecorateur{
+class Carapace : public AccessoireDecorateur{
 private:
     double coefCarapaceMort;
     double coefCarapaceVitesse;

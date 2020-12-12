@@ -1,9 +1,9 @@
 #ifndef CAMOUFLAGE_H
 #define CAMOUFLAGE_H
 
-#include "AccesoireDecorateur.h"
+#include "AccessoireDecorateur.h"
 
-class Camouflage : public AccesoireDecorateur {
+class Camouflage : public AccessoireDecorateur {
 private:
     double capaciteCamouflage;
 

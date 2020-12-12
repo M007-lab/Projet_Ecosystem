@@ -1,9 +1,9 @@
 #ifndef NAGEOIRE_H
 #define NAGEOIRE_H
 
-#include "AccesoireDecorateur.h"
+#include "AccessoireDecorateur.h"
 
-class Nageoire : public AccesoireDecorateur {
+class Nageoire : public AccessoireDecorateur {
 private:
     double coefNageoire;
 
