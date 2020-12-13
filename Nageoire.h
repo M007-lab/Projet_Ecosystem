@@ -2,7 +2,7 @@
 #define NAGEOIRE_H
 
 #include "AccessoireDecorateur.h"
-
+#include "Bestiole.h"
 class Nageoire : public AccessoireDecorateur {
 private:
     double coefNageoire;

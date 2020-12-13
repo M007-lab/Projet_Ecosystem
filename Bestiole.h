@@ -11,9 +11,8 @@
 using namespace std;
 
 
-class Comportement;
-class Milieu;
 
+class Comportement;
 
 class Bestiole
 {
@@ -33,26 +32,25 @@ protected :
    double            vitesse;
    double            age;
    double            ageMax;
-   
-
    T               * couleur ;
-
-private :
-   void bouge( int xLim, int yLim );
+   
 
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    Bestiole(int x,int y,int ageMax,int vitesse,int orientation);
    ~Bestiole( void );                              // Destructeur
-                                                     // Operateur d'affectation binaire par defaut
-   virtual void action(Milieu & monMilieu ) = 0;
+   virtual Bestiole* action(std::list<Bestiole*> allBestioles);
+   void bouge( int xLim, int yLim );
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
+   virtual void toString() ;
    virtual bool jeTeVois( const Bestiole & b ) const = 0;
-   std::list<Bestiole*> getVoisins(Milieu & monMilieu);
+   std::list<Bestiole*> getVoisins(std::list<Bestiole*> allBestioles);
    virtual void collide(); // Collision between Bestioles
+   virtual Bestiole* checkClone();
    virtual Bestiole* clone() = 0;
+
 
 
    // Setters

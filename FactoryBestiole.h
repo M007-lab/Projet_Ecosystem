@@ -3,20 +3,20 @@
 
 #include "Configuration.h"
 #include "Factory.h"
+#include "BestioleSimple.h"
 #include "Comportement.h"
 #include "Multiple.h"
 #include "Gregaire.h"
 #include "Peureuse.h"
 #include "Kamikaze.h"
 #include "Prevoyante.h"
-#include "Bestiole.h"
-#include "BestioleSimple.h"
 #include "Oreille.h"
 #include "Yeux.h" 
 #include "Nageoire.h"
 #include "Carapace.h"
 #include "Camouflage.h"
 #include "RandomUtils.h"
+#include "RandGenerator.h"
 
 class FactoryBestiole : public Factory
 {   
@@ -38,8 +38,8 @@ class FactoryBestiole : public Factory
         Rand_double orientation;
     public:
         FactoryBestiole();
-        ~FactoryBestiole();
-        Bestiole * createBestiole(Comportement* c,unsigned char _color[3]);
+        // ~FactoryBestiole();
+        BestioleSimple* createBestiole(Comportement* c,unsigned char _color[3]);
 };
 
 #endif

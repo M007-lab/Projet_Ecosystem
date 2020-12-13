@@ -14,16 +14,13 @@ std::vector<T> init_n_elements(std::vector<T> list,std::vector<double> weight,in
     std::vector<T>  randomlist;
     for(int i=0;i<number;++i)
     {
-        randomlist.push_back(random_weighted(list,weight));
+        randomlist.push_back(random_element(list,weight));
     }
     return randomlist;
 };
 
 template <typename T>
-
-// Pour titer un élément au hasard dans une liste, en respectant les poids dans weight si sum(weight) = 1
-// Aucune garantie si sum(weight) != 1
-// Méthode qui va être utilisée pour ajouter au hasard une bestiole au cours de la simulation
+// yield random element from given list according to a weight
 T random_element(std::vector<T> list,std::vector<double> weight)
 {
     // Vérification des arguments

@@ -4,9 +4,9 @@
 #include "Comportement.h"
 class Peureuse:public Comportement{
 public:
-    void executeBehavior(Bestiole* bestiole, Milieu& milieu) override;
+    void executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins) override;
     virtual Peureuse* dupliquer() const override;
-     ~Peureuse(){};
+     ~Peureuse();
     virtual std::string getName() override;
 };
 

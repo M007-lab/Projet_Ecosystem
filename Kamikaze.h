@@ -5,9 +5,9 @@
 
 class Kamikaze:public Comportement{
 public:
-    void executeBehavior(Bestiole* bestiole, Milieu& milieu) override;
+    void executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins) override;
     virtual Kamikaze* dupliquer() const override;
-     ~Kamikaze(){};
+     ~Kamikaze();
     virtual std::string getName() override;
 };
 

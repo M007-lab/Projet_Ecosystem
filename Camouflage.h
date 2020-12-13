@@ -2,7 +2,7 @@
 #define _CAMOUFLAGE_H
 
 #include "AccessoireDecorateur.h"
-
+#include "Bestiole.h"
 class Camouflage : public AccessoireDecorateur {
 private:
     double capaciteCamouflage;

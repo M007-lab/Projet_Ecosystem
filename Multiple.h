@@ -8,7 +8,7 @@ class Multiple: public Comportement {
     Comportement* comportement;
 public:
     ~Multiple();
-    void executeBehavior(Bestiole* bestiole,Milieu& milieu) override;
+    void executeBehavior(Bestiole* bestiole,std::list<Bestiole*> voisins) override;
     virtual Multiple* dupliquer() const override;
     virtual std::string getName() override;
 };

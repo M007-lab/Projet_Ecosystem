@@ -2,7 +2,7 @@
 #define CARAPACE_H
 
 #include "AccessoireDecorateur.h"
-
+#include "Bestiole.h" 
 class Carapace : public AccessoireDecorateur{
 private:
     double coefCarapaceMort;

@@ -1,10 +1,10 @@
 #include "Kamikaze.h"
 #include <cmath>
 
-void Kamikaze::executeBehavior(Bestiole* bestiole, Milieu& milieu) {
+void Kamikaze::executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins) {
     double distanceMin = 9999999;
     double vitesse = bestiole->getVitesse();
-    std::list<Bestiole*> voisins = bestiole->getVoisins(milieu);
+    // std::list<Bestiole*> voisins = bestiole->getVoisins(milieu);
     double x = bestiole->getX();
     double y = bestiole->getY();
     double direction;

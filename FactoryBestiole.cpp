@@ -1,9 +1,6 @@
 #include "FactoryBestiole.h"
-#include "RandomUtils.h"
-#include "Bestiole.h"
-#include "BestioleSimple.h"
 
-FactoryBestiole::FactoryBestiole()
+FactoryBestiole::FactoryBestiole(void)
 {   
 
     vitesse = Rand_double(0,Config::getInstance()->vitesseMax);
@@ -22,9 +19,9 @@ FactoryBestiole::FactoryBestiole()
     orientation = Rand_double(0,2*M_PI);
 }
 
-Bestiole* FactoryBestiole::createBestiole(Comportement* c,unsigned char _color[3])
+BestioleSimple* FactoryBestiole::createBestiole(Comportement* c,unsigned char _color[3])
 {
-    Bestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer()),_color);
+    BestioleSimple* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer(),_color);
     Rand_double rd(0,1);
     // if(rd()<= Config::getInstance()->probaYeux)
     //     ptr = new Yeux(ptr,gammaY(),deltaY(),alpha());

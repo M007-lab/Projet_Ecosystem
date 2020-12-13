@@ -4,7 +4,7 @@
 #include "Kamikaze.h"
 #include "Prevoyante.h"
 
-void Multiple::executeBehavior(Bestiole* bestiole,Milieu& milieu){
+void Multiple::executeBehavior(Bestiole* bestiole,std::list<Bestiole*> voisins){
 
 }
 

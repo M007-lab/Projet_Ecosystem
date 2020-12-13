@@ -2,11 +2,12 @@
 #define GREGAIRE_H
 
 #include "Comportement.h"
+
 class Gregaire:public Comportement{
 public: 
-    void executeBehavior(Bestiole* bestiole,Milieu& milieu) override;
+    void executeBehavior(Bestiole* bestiole,std::list<Bestiole*> voisins) override;
     virtual Gregaire* dupliquer() const override;
-     ~Gregaire(){};
+     ~Gregaire();
     virtual std::string getName() override;
 };
 

@@ -109,12 +109,41 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
+Bestiole* Bestiole::action(std::list<Bestiole*> allBestioles)
 {
    
-   bouge( monMilieu.getWidth(), monMilieu.getHeight() );
+   bouge(Config::getInstance()->width, Config::getInstance()->height);
+   checkClone();
+
+    std::list<Bestiole*> bestioles = getVoisins(allBestioles);
+    for(auto b: bestioles)
+    {
+        if(b->getIdentite()!=this->getIdentite() && this->getDistanceA(*b)<2*Config::getInstance()->rayon)
+        {
+            this->collide();
+            
+            b->collide();
+        }
+    }
    
 
+}
+
+Bestiole* Bestiole::checkClone()
+{
+    if(this->getAge()<this->getAgeMax()){
+
+      Rand_double testClonage = Rand_double(0,1);
+      if(testClonage()<=Config::getInstance()->probaClonage)
+      {
+         
+          return this->clone();
+      }
+      else
+      {
+          
+          return nullptr;
+      }
 }
 
 void Bestiole::collide()
@@ -156,10 +185,10 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 
-std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
+std::list<Bestiole*> Bestiole::getVoisins(std::list<Bestiole*> allBestioles)
 {   
     std::list<Bestiole*> voisins;
-    for (auto b : monMilieu.getBestiolesList())
+    for (auto b : allBestioles))
     {
            if (this->jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
            {

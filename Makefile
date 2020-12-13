@@ -1,4 +1,4 @@
-SYSTEM = Aquarium.o Milieu.o Configuration.o FabriqueBestiole.o RandGenerator.o RandomUtils.o
+SYSTEM = Aquarium.o Milieu.o Configuration.o FactoryBestiole.o RandGenerator.o 
 DECORATEUR = Bestiole.o  AccesoireDecorateur.o CapteurDecorateur.o Oreille.o Yeux.o Nageoire.o Camouflage.o Carapace.o
 COMPORTEMENT = BestioleSimple.o Gregaire.o Kamikaze.o Multiple.o Peureuse.o Prevoyante.o
 

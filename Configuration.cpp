@@ -55,10 +55,10 @@ Config::Config(string filename) {
 
 
                 // age/vitesse
-            else if (line.find("maxAge") != string::npos)
-                sin >> maxAge;
-            else if (line.find("maxVitesse") != string::npos)
-                sin >> maxVitesse;
+            else if (line.find("ageMax") != string::npos)
+                sin >> ageMax;
+            else if (line.find("vitesseMax") != string::npos)
+                sin >> vitesseMax;
 
                 // Yeux
             else if (line.find("alphaMax") != string::npos)
