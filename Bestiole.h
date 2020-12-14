@@ -46,7 +46,6 @@ public :                                           // Forme canonique :
    virtual void toString(iostream & out) = 0;
    virtual void toString() ;
    virtual bool jeTeVois( const Bestiole & b ) const = 0;
-   std::list<Bestiole*> getVoisins(std::list<Bestiole*> allBestioles);
    virtual void collide(); // Collision between Bestioles
    virtual Bestiole* checkClone();
    virtual Bestiole* clone() = 0;
@@ -54,11 +53,11 @@ public :                                           // Forme canonique :
 
 
    // Setters
-   virtual void setX(int newX) ;
-   virtual void setY(int newY) ;
-   virtual void setVitesse(double newVitesse) ;
-   virtual void setOrientation(double newOrientation) ;
-   virtual void setAge(int newAge) ;
+   virtual void setX(int newX) = 0 ;
+   virtual void setY(int newY) = 0;
+   virtual void setVitesse(double newVitesse) = 0 ;
+   virtual void setOrientation(double newOrientation) = 0 ;
+   virtual void setAge(int newAge) = 0 ;
 
    //getters
    virtual int getX() const;
@@ -69,9 +68,8 @@ public :                                           // Forme canonique :
    virtual double getVitesse() const;
    virtual double getOrientation() const;
    void initCoords( int xLim, int yLim );
-   virtual Comportement* getComportement() const = 0; // pure virtual method. Bestiole is an abstract class
-   virtual double getProbaMort() const = 0;
-   virtual double getCamouflage() const = 0;
+   virtual double getProbaMort() const; // pure virtual method. Bestiole is an abstract class
+   virtual double getCamouflage() const;
 
    virtual unsigned char * getColor() const;
    virtual unsigned char* getLightColor() const;
