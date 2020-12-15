@@ -4,7 +4,7 @@
 
 #include "UImg.h"
 #include "FactoryBestiole.h"
-// #include "Comportement.h"
+
 
 #include <iostream>
 #include <vector>
@@ -32,7 +32,7 @@ public :
     };
 };
 
-class Milieu //: public UImg
+class Milieu : public UImg
 {
 
 private :
@@ -52,7 +52,7 @@ private :
    std::map<Comportement*,Color> mapComportementColor;
    std::map<Comportement*, double> mapComportementWeight;
    FactoryBestiole creator = FactoryBestiole() ;
-   UImg supportGraphique;
+   UImg graphicSupport;
 
 public :
    Milieu( int _width, int _height );
@@ -67,9 +67,10 @@ public :
    void newBestiole();
    void addBestiole(Bestiole * b );
    void killBestiole(int id);
-   void killBestiole(int x, int y); // input mouse killing
+   void killBestiole(int x, int y); // mouse input killing
    std::list<Bestiole*> getBestiolesList(); // return new Liste Bestiole after killing expired ones
 //     int  nbVoisins( const Bestiole & b );
+   UImg& getGraphicSupport();
    void report(std::ofstream &file);
 
 };

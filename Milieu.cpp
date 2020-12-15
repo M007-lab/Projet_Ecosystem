@@ -11,7 +11,7 @@ Milieu::Milieu( int _width, int _height ) : //UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {  
    
-   supportGraphique = UImg( width, height, 1, 3 );
+   graphicSupport = UImg( width, height, 1, 3 );
    // create initiale population
    init_population();
 
@@ -88,7 +88,7 @@ void Milieu::step( void )
          bClone->bouge(width,height);
 
       }
-      b->draw(supportGraphique);
+      b->draw(graphicSupport);
 
    } // for
 
@@ -180,3 +180,7 @@ int Milieu::getWidth( void ) const
 { return width; }
 int Milieu::getHeight( void ) const 
 { return height; }
+CImg<T>&  Milieu::getGraphicSupport()
+{
+    return graphicSupport;
+}

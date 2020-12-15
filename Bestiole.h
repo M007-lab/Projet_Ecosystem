@@ -37,7 +37,7 @@ public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    Bestiole(int x,int y,int ageMax,int vitesse,int orientation);
-   ~Bestiole( void );                              // Destructeur
+   virtual ~Bestiole( void );                              // Destructeur
    virtual Bestiole* action(std::list<Bestiole*> allBestioles);
    void bouge( int xLim, int yLim );
    virtual void draw( UImg & support ) = 0;

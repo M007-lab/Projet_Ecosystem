@@ -1,22 +1,18 @@
-SYSTEM = Aquarium.o Milieu.o Configuration.o FactoryBestiole.o RandGenerator.o 
-DECORATEUR = Bestiole.o  AccessoireDecorateur.o CapteurDecorateur.o Oreille.o Yeux.o Nageoire.o Camouflage.o Carapace.o
-COMPORTEMENT = BestioleSimple.o Gregaire.o Kamikaze.o Multiple.o Peureuse.o Prevoyante.o
+CFLAGS= -c -Wall
 
-main : main.cpp $(SYSTEM) $(COMPORTEMENT) $(DECORATEUR)
-	g++ -Wall -std=c++11 -o main main.cpp $(SYSTEM) $(COMPORTEMENT) $(DECORATEUR)  -I . -lX11 -lpthread
+BASE = Aquarium.o Milieu.o Configuration.o FactoryBestiole.o RandGenerator.o 
+DECORATEUR = Bestiole.o  ConcreteBestiole.o AccessoireDecorateur.o CapteurDecorateur.o Oreille.o Yeux.o Nageoire.o Camouflage.o Carapace.o
+COMPORTEMENT = BestioleSimple.o Gregaire.o Kamikaze.o Multiple.o Peureuse.o Prevoyante.o
+all: clean simul %.o
+simul : main.o $(BASE) $(COMPORTEMENT) $(DECORATEUR)
+	g++ $(CFLAGS) -o simul main.o $(BASE) $(COMPORTEMENT) $(DECORATEUR)  -I . -lX11 -lpthread
 
 %.o : %.cpp %.h
-	g++ -Wall -std=c++11  -c $< -I .
+	g++ $(CFLAGS)  -c $< -I .
 
 clean:
-	rm *.o; rm main
+	$(RM) *.o
+# rm main
 
-# Aquarium.o : Aquarium.h Aquarium.cpp
-# 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
 
-# Bestiole.o : Bestiole.h Bestiole.cpp
-# 	g++ -Wall -std=c++11  -c Bestiole.cpp -I .
-
-# Milieu.o : Milieu.h Milieu.cpp
-# 	g++ -Wall -std=c++11  -c Milieu.cpp -I .
 
