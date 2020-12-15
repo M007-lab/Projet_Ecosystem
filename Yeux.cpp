@@ -8,11 +8,18 @@ Yeux::Yeux(ConcreteBestiole* base, double detec, double dist, double angle) {
     this->distance = dist;
 }
 
+ConcreteBestiole* Yeux::getBase() const{return base;}
+std::string Yeux::getName() const{return name;}
 
+ConcreteBestiole* Yeux::clone()
+{
+    ConcreteBestiole* ptr = new Yeux(this->getBase()->clone(),this->capaciteDetection,this->distance,this->angle);
+    return ptr;
+}
 bool Yeux::jeTeVois(const Bestiole & autre) const {
     bool voisOk = this->capaciteDetection > autre.getCamouflage();
-    bool distanceOk = this->dansDistanceDetection(autre);
-    bool champOk = this->dansChampAngulaire(autre);
+    bool distanceOk = this->dansDistanceDetection(autre,distance);
+    bool champOk = this->dansChampsAngulaire(autre,angle);
     return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(autre));
 }
 

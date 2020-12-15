@@ -9,6 +9,18 @@ Nageoire::Nageoire(ConcreteBestiole* base, double coefVitesse) {
 double Nageoire::getVitesse() const {
     return this->coefNageoire * (this->getBase()->getVitesse());
 }
+double Nageoire::getProbaMort() const {
+    return this->getBase()->getProbaMort();
+}
+double Nageoire::getCamouflage() const {
+    return this->getBase()->getCamouflage();
+}
+ConcreteBestiole* Nageoire::getBase() const{return base;}
+std::string Nageoire::getName() const{return name;}
+
+ConcreteBestiole* Nageoire::clone() {
+  return new Nageoire(this->getBase()->clone(), this->coefNageoire);
+}
 
 void Nageoire::toString(std::ostringstream stream) {
     // std::ostringstream stream;

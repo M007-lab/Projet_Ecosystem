@@ -9,14 +9,17 @@ protected :
     ConcreteBestiole* base;
 
 public :
-    virtual ~AccessoireDecorateur();
+    virtual ~AccessoireDecorateur(){};
 
-    ConcreteBestiole* getBase() const;
-    std::string getName() const;
+    virtual ConcreteBestiole* getBase() const = 0;
+    virtual std::string getName() const = 0;
+    
+    virtual ConcreteBestiole* clone() = 0;
+    Comportement* getComportement() const ;
 
-    virtual double getVitesse() const override ;
-    virtual double getCamouflage() const override;
-    virtual double getProbaMort() const override;
+    virtual double getVitesse() const override = 0 ;
+    virtual double getCamouflage() const override = 0 ;
+    virtual double getProbaMort() const override  = 0;
 
     virtual void toString(std::ostringstream stream) = 0;
     virtual void draw(UImg& support) = 0;

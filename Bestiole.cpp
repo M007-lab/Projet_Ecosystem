@@ -110,20 +110,6 @@ void Bestiole::bouge( int xLim, int yLim )
 
 
 
-void Bestiole::collide()
-{
-    double testMort = rand()/RAND_MAX; // Rand_double
-    if(testMort<=this->getProbaMort())
-    {
-        //pour tuer la bestiole, on met son âge au maximum
-        setAge(Config::getInstance()->ageMax);
-    }
-    else
-    {
-        //si la collision ne tue pas, on repart dans la direction opposée
-        setOrientation(-getOrientation());
-    }
-}
 
 
 
@@ -148,7 +134,13 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 }
 
+double Bestiole::getCamouflage() const {
+  return 0.0;
+}
 
+double Bestiole::getProbaMort() const {
+  return Config::getInstance()->probaMortCol;
+}
 
 
 int Bestiole::getIdentite() const {
@@ -190,22 +182,6 @@ double Bestiole::getVitesse() const {
   return vitesse;
 }
 
-//setters
-void Bestiole::setX(int newX) {
-    x = newX;
-}
-void Bestiole::setY(int newY) {
-    y = newY;
-}
-void Bestiole::setVitesse(double newVitesse) {
-    vitesse = newVitesse;
-}
-void Bestiole::setOrientation(double newOrientation) {
-    orientation = newOrientation;
-}
-void Bestiole::setAge(int newAge) {
-    age = newAge;
-}
 
 
 double Bestiole::getDistanceA(const Bestiole& b) const {

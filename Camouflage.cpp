@@ -9,6 +9,19 @@ Camouflage::Camouflage(ConcreteBestiole* base, double capacite) {
 double Camouflage::getCamouflage() const {
   return this->capaciteCamouflage + this->getBase()->getCamouflage();
 }
+double Camouflage::getVitesse() const {
+    return this->getBase()->getVitesse();
+}
+double Camouflage::getProbaMort() const {
+    return this->getBase()->getProbaMort();
+}
+
+ConcreteBestiole* Camouflage::getBase() const{return base;}
+std::string Camouflage::getName() const{return name;}
+
+ConcreteBestiole* Camouflage::clone() {
+  return new Camouflage(this->getBase()->clone(), this->capaciteCamouflage);
+}
 
 void Camouflage::toString(std::ostringstream stream) {
     // std::ostringstream stream;

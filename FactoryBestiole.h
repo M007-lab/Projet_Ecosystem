@@ -17,7 +17,7 @@
 #include "Carapace.h"
 #include "Camouflage.h"
 #include "RandomUtils.h"
-#include "RandGenerator.h"
+
 
 class FactoryBestiole : public Factory
 {   

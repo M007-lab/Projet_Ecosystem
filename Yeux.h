@@ -10,9 +10,12 @@ class Yeux : public CapteurDecorateur {
 
 public :
     Yeux(ConcreteBestiole* base, double detec, double dist, double angle);
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
+    ConcreteBestiole* clone();
     bool jeTeVois(const Bestiole & b) const override;
-    bool dansDistanceDetection(const Bestiole & b) const;
-    bool dansChampAngulaire(const Bestiole & b) const;
+    // bool dansDistanceDetection(const Bestiole & b) const;
+    // bool dansChampAngulaire(const Bestiole & b) const;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 

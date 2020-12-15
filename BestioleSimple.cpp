@@ -24,20 +24,19 @@ BestioleSimple::~BestioleSimple(){
 Comportement* BestioleSimple::getComportement() const{
     return comportement;
 }
+double BestioleSimple::getCamouflage() const {
+  return 0.0;
+}
 
-// Bestiole* Bestiole::action( std::list<Bestiole*> allBestioles )
-// {
-    
-// }
-// Bestiole* BestioleSimple::clone()
-// {
-//     Bestiole* ptr = new BestioleSimple(*this);
-//     double newOrientation= Rand_double(0,2*PI)();
-//     double distance = Rand_double(Config::getInstance()->distClonageMin,Config::getInstance()->distClonageMax)();
-//     ptr->setX(ptr->getX() + std::round (cos(newOrientation)*distance));
-//     ptr->setY(ptr->getY() - std::round (sin(newOrientation)*distance));
-//     return ptr;
-// }
+ConcreteBestiole* BestioleSimple::clone()
+{
+    ConcreteBestiole* ptr = new BestioleSimple(*this);
+    double newOrientation= Rand_double(0,2*PI)();
+    double distance = Rand_double(Config::getInstance()->distClonageMin,Config::getInstance()->distClonageMax)();
+    ptr->setX(ptr->getX() + std::round (cos(newOrientation)*distance));
+    ptr->setY(ptr->getY() - std::round (sin(newOrientation)*distance));
+    return ptr;
+}
 
 // void BestioleSimple::draw(UImg& support){
 //     double xt = (double) this->getX() - cos(this->getOrientation())*Config::getInstance()->rayon/2;
@@ -45,20 +44,9 @@ Comportement* BestioleSimple::getComportement() const{
 //     support.draw_ellipse(xt, yt, Config::getInstance()->rayon*2, Config::getInstance()->rayon/2.5,-this->getOrientation()/M_PI*180.,this->getColor());
 //     support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon,getColor());
 // }
-bool BestioleSimple::jeTeVois( const Bestiole & b ) const
-{
-    return false;
-}
 
 
-double BestioleSimple::getCamouflage() const {
-    return 0.0;
-}
 
-
-double Bestiole::getProbaMort() const {
-   return Config::getInstance()->probaMortCol;
-}
 
 //une fois arrivé à BestioleSimple, on a parcouru tous les décorateurs, on ne rajoute donc rien à la liste
 // void BestioleSimple::getDecorateurs(std::list<std::string> &decorateurs){

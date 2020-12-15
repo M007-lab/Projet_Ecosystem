@@ -15,6 +15,16 @@ double Carapace::getVitesse() const {
   return (1/this->coefCarapaceVitesse) * (this->getBase()->getVitesse());
 }
 
+double Carapace::getCamouflage() const {
+    return this->getBase()->getCamouflage();
+}
+
+ConcreteBestiole* Carapace::getBase() const{return base;}
+std::string Carapace::getName() const{return name;}
+
+ConcreteBestiole* Carapace::clone() {
+  return new Carapace(this->getBase()->clone(), this->coefCarapaceMort, this->coefCarapaceVitesse);
+}
 void Carapace::toString(std::ostringstream stream) {
     
     stream << this ;

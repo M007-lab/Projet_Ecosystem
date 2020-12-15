@@ -8,7 +8,8 @@ Oreille::Oreille(ConcreteBestiole* base, double detec, double dist) {
     this->distance = dist;
     
 }
-
+ConcreteBestiole* Oreille::getBase() const{return base;}
+std::string Oreille::getName() const{return name;}
 void Oreille::toString(std::ostringstream stream) {
     // std::ostringstream stream;
     stream  << this ;
@@ -21,6 +22,9 @@ bool Oreille::jeTeVois(const Bestiole & b) const {
     return ( (entendOk && distanceOk) || this->getBase()->jeTeVois(b));
 }
 
+ConcreteBestiole* Oreille::clone() {
+  return new Oreille(this->getBase()->clone(), this->capaciteDetection, this->distance);
+}
 void Oreille::draw(UImg& support) {
     support.draw_circle(this->getX(),this->getY(), this->distance,this->getColor(), 1.0f, 0xFFFFFFFF); // Dessine un cerle représentant le rayon d'écoute de la bestiole
     this->getBase()->draw(support);

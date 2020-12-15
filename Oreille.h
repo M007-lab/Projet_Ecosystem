@@ -13,6 +13,9 @@ class Oreille : public CapteurDecorateur {
 
 public :
     Oreille(ConcreteBestiole* base, double detec, double dist);
+    ConcreteBestiole* getBase() const override;
+    std::string getName() const override;
+    ConcreteBestiole* clone();
     bool jeTeVois(const Bestiole & b) const override;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;

@@ -10,6 +10,12 @@ private:
 public:
     Camouflage(ConcreteBestiole* base, double capacite);
     double getCamouflage() const override;
+    double getVitesse() const override ;
+    double getProbaMort() const override ;
+    
+    ConcreteBestiole* clone();
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 

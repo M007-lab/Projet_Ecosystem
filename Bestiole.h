@@ -38,13 +38,12 @@ public :                                           // Forme canonique :
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    Bestiole(int x,int y,int ageMax,int vitesse,int orientation);
    virtual ~Bestiole( void );                              // Destructeur
-   virtual Bestiole* action(std::list<Bestiole*> allBestioles);
    void bouge( int xLim, int yLim );
    virtual void draw( UImg & support ) = 0;
-   virtual void toString(iostream & out) = 0;
-   virtual void toString() ;
+   virtual void toString(iostream & out) const = 0;
+   virtual void toString() const = 0;
   
-   virtual void collide(); // Collision between Bestioles
+   virtual void collide(Bestiole& bestiole) = 0; // Collision between Bestioles
    
 
 

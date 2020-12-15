@@ -2,7 +2,9 @@
 #define RANDUTILS_H
 
 #include <vector>
-#include "RandGenerator.h"
+#include<stdexcept>
+#include "RandomDouble.h"
+#include "RandomInt.h"
 
 template <typename T>
 // initialize a population of n elements

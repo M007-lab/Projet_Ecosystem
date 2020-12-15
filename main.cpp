@@ -1,6 +1,5 @@
 #include "Aquarium.h"
 #include "Milieu.h"
-#include "Bestiole.h"
 #include "Configuration.h"
 #include "FactoryBestiole.h"
 #include "AccessoireDecorateur.h"
@@ -10,9 +9,9 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char *argv[])
 {
-
+   Config::filename = argv[1];
    Aquarium       ecosysteme( 640, 480, 30 );
 
    // for ( int i = 1; i <= 20; ++i )

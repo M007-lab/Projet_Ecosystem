@@ -9,11 +9,14 @@ class CapteurDecorateur : public ConcreteBestiole {
     ConcreteBestiole* base;
 
   public :
-    virtual ~CapteurDecorateur();
+    virtual ~CapteurDecorateur(){};
 
-    ConcreteBestiole* getBase() const;
-    std::string getName() const;
-
+    virtual ConcreteBestiole* getBase() const = 0;
+    virtual std::string getName() const = 0;
+    
+    virtual ConcreteBestiole* clone() = 0;
+    Comportement* getComportement() const;
+    
     virtual bool jeTeVois( const Bestiole & b ) const override = 0;
 
     virtual void toString(std::ostringstream stream) = 0;

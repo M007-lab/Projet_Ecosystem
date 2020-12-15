@@ -10,8 +10,13 @@ private:
 
 public:
     Carapace(ConcreteBestiole* base, double coefMort, double coefVitesse);
-    double getProbaMort() const override;
-    double getVitesse() const override;
+    double getCamouflage() const override;
+    double getVitesse() const override ;
+    double getProbaMort() const override ;
+
+    ConcreteBestiole* clone();
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;
 
