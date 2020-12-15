@@ -1,6 +1,6 @@
 #include "Nageoire.h"
 
-Nageoire::Nageoire(Bestiole* base, double coefVitesse) {
+Nageoire::Nageoire(ConcreteBestiole* base, double coefVitesse) {
     this->name = "Nageoire";
     this->base = base;
     this->coefNageoire = coefVitesse;

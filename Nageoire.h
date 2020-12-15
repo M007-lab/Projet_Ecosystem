@@ -8,7 +8,7 @@ private:
     double coefNageoire;
 
 public:
-    Nageoire(Bestiole* base, double coefVitesse);
+    Nageoire(ConcreteBestiole* base, double coefVitesse);
     double getVitesse() const override;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support);

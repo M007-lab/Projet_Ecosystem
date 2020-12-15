@@ -9,7 +9,7 @@ private:
     double coefCarapaceVitesse;
 
 public:
-    Carapace(Bestiole* base, double coefMort, double coefVitesse);
+    Carapace(ConcreteBestiole* base, double coefMort, double coefVitesse);
     double getProbaMort() const override;
     double getVitesse() const override;
     void toString(std::ostringstream stream) override;

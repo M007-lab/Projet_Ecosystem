@@ -3,8 +3,7 @@
 
 
 #include "UImg.h"
-#include "Milieu.h"
-
+#include "Configuration.h"
 #include <list>
 #include <iostream>
 
@@ -12,7 +11,6 @@ using namespace std;
 
 
 
-class Comportement;
 
 class Bestiole
 {
@@ -45,10 +43,9 @@ public :                                           // Forme canonique :
    virtual void draw( UImg & support ) = 0;
    virtual void toString(iostream & out) = 0;
    virtual void toString() ;
-   virtual bool jeTeVois( const Bestiole & b ) const = 0;
+  
    virtual void collide(); // Collision between Bestioles
-   virtual Bestiole* checkClone();
-   virtual Bestiole* clone() = 0;
+   
 
 
 

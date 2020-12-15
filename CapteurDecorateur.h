@@ -1,17 +1,17 @@
 #ifndef _CAPTEURDECORATEUR_H
 #define _CAPTEURDECORATEUR_H
 
-#include "BestioleSimple.h"
+#include "ConcreteBestiole.h"
 
-class CapteurDecorateur : public BestioleSimple {
+class CapteurDecorateur : public ConcreteBestiole {
   protected :
     std::string name;
-    BestioleSimple* base;
+    ConcreteBestiole* base;
 
   public :
     virtual ~CapteurDecorateur();
 
-    BestioleSimple* getBase() const;
+    ConcreteBestiole* getBase() const;
     std::string getName() const;
 
     virtual bool jeTeVois( const Bestiole & b ) const override = 0;

@@ -1,17 +1,17 @@
 #ifndef _ACCESSOIREDECORATEUR_H
 #define _ACCESSOIREDECORATEUR_H
 
-#include "BestioleSimple.h"
+#include "ConcreteBestiole.h"
 
-class AccessoireDecorateur : public BestioleSimple {
+class AccessoireDecorateur : public ConcreteBestiole {
 protected :
     std::string name;
-    BestioleSimple* base;
+    ConcreteBestiole* base;
 
 public :
     virtual ~AccessoireDecorateur();
 
-    BestioleSimple* getBase() const;
+    ConcreteBestiole* getBase() const;
     std::string getName() const;
 
     virtual double getVitesse() const override ;

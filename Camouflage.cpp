@@ -1,6 +1,6 @@
 #include "Camouflage.h"
 
-Camouflage::Camouflage(Bestiole* base, double capacite) {
+Camouflage::Camouflage(ConcreteBestiole* base, double capacite) {
   this->name = "Camouflage";
   this->base = base;
   this->capaciteCamouflage = capacite;
@@ -11,7 +11,7 @@ double Camouflage::getCamouflage() const {
 }
 
 void Camouflage::toString(std::ostringstream stream) {
-    std::ostringstream stream;
+    // std::ostringstream stream;
     stream << this ;
     // std::string str =  stream.str();
 }

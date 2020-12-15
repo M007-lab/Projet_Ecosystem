@@ -1,6 +1,6 @@
 #include "CapteurDecorateur.h"
 
-BestioleSimple* CapteurDecorateur::getBase() const{
+ConcreteBestiole* CapteurDecorateur::getBase() const{
     return this->base;
 }
 

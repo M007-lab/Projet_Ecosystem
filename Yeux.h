@@ -9,7 +9,7 @@ class Yeux : public CapteurDecorateur {
     double capaciteDetection;
 
 public :
-    Yeux(Bestiole* base, double detec, double dist, double angle);
+    Yeux(ConcreteBestiole* base, double detec, double dist, double angle);
     bool jeTeVois(const Bestiole & b) const override;
     bool dansDistanceDetection(const Bestiole & b) const;
     bool dansChampAngulaire(const Bestiole & b) const;

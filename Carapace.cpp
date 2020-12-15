@@ -1,6 +1,6 @@
 #include "Carapace.h"
 
-Carapace::Carapace(Bestiole* base, double coefMort, double coefVitesse) {
+Carapace::Carapace(ConcreteBestiole* base, double coefMort, double coefVitesse) {
     this->name = "Carapace";
     this->base = base;
     this->coefCarapaceVitesse = coefVitesse;

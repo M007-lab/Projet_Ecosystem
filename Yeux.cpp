@@ -1,6 +1,6 @@
 #include "Yeux.h"
 
-Yeux::Yeux(Bestiole* base, double detec, double dist, double angle) {
+Yeux::Yeux(ConcreteBestiole* base, double detec, double dist, double angle) {
     this->name = "Yeux";
     this->base = base;
     this->capaciteDetection = detec;

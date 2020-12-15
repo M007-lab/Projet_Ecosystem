@@ -19,9 +19,12 @@ FactoryBestiole::FactoryBestiole(void)
     orientation = Rand_double(0,2*M_PI);
 }
 
-BestioleSimple* FactoryBestiole::createBestiole(Comportement* c,unsigned char _color[3])
-{
-    BestioleSimple* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer(),_color);
+ConcreteBestiole* FactoryBestiole::createBestiole(Comportement* c,unsigned char _color[3])
+{   
+    // if (c!=nullptr){
+    //     ConcreteBestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation());
+    // }
+    ConcreteBestiole* ptr = new BestioleSimple(x(),y(),age(),vitesse(),orientation(),c->dupliquer(),_color);
     Rand_double rd(0,1);
     // if(rd()<= Config::getInstance()->probaYeux)
     //     ptr = new Yeux(ptr,gammaY(),deltaY(),alpha());

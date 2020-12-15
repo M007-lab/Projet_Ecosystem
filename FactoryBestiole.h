@@ -3,6 +3,7 @@
 
 #include "Configuration.h"
 #include "Factory.h"
+#include "ConcreteBestiole.h"
 #include "BestioleSimple.h"
 #include "Comportement.h"
 #include "Multiple.h"
@@ -39,7 +40,7 @@ class FactoryBestiole : public Factory
     public:
         FactoryBestiole();
         // ~FactoryBestiole();
-        BestioleSimple* createBestiole(Comportement* c,unsigned char _color[3]);
+        ConcreteBestiole* createBestiole(Comportement* c,unsigned char _color[3]);
 };
 
 #endif

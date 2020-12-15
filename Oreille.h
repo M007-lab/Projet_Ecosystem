@@ -12,7 +12,7 @@ class Oreille : public CapteurDecorateur {
     double capaciteDetection;
 
 public :
-    Oreille(Bestiole* base, double detec, double dist);
+    Oreille(ConcreteBestiole* base, double detec, double dist);
     bool jeTeVois(const Bestiole & b) const override;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;

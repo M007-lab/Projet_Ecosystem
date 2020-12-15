@@ -2,13 +2,13 @@
 #define _CAMOUFLAGE_H
 
 #include "AccessoireDecorateur.h"
-#include "Bestiole.h"
+
 class Camouflage : public AccessoireDecorateur {
 private:
     double capaciteCamouflage;
 
 public:
-    Camouflage(Bestiole* base, double capacite);
+    Camouflage(ConcreteBestiole* base, double capacite);
     double getCamouflage() const override;
     void toString(std::ostringstream stream) override;
     void draw(UImg& support) override;

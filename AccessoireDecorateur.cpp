@@ -1,6 +1,6 @@
 #include "AccessoireDecorateur.h"
 
-BestioleSimple* AccessoireDecorateur::getBase() const{
+ConcreteBestiole* AccessoireDecorateur::getBase() const{
     return this->base;
 }
 

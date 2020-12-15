@@ -2,7 +2,7 @@
 #include "Milieu.h"
 #include "Bestiole.h"
 #include "Configuration.h"
-#include "FabriqueBestiole.h"
+#include "FactoryBestiole.h"
 #include "AccessoireDecorateur.h"
 #include "CapteurDecorateur.h"
 #include <iostream>

@@ -1,7 +1,7 @@
 #include "Oreille.h"
 
 
-Oreille::Oreille(Bestiole* base, double detec, double dist) {
+Oreille::Oreille(ConcreteBestiole* base, double detec, double dist) {
     this->name = "Oreille";
     this->base = base;
     this->capaciteDetection = detec;
@@ -10,7 +10,7 @@ Oreille::Oreille(Bestiole* base, double detec, double dist) {
 }
 
 void Oreille::toString(std::ostringstream stream) {
-    std::ostringstream stream;
+    // std::ostringstream stream;
     stream  << this ;
     //std::string str =  stream.str();
 }
