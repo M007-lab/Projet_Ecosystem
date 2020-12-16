@@ -2,17 +2,23 @@
 #define NAGEOIRE_H
 
 #include "AccessoireDecorateur.h"
-
+#include "Bestiole.h"
 class Nageoire : public AccessoireDecorateur {
 private:
     double coefNageoire;
 
 public:
-    Nageoire(Bestiole* base, double coefVitesse);
-    double getVitesse() override;
-    void toString() override;
+    Nageoire(ConcreteBestiole* base, double coefVitesse);
+    double getCamouflage() const override;
+    double getVitesse() const override ;
+    double getProbaMort() const override ;
+    
+    ConcreteBestiole* clone();
+    void toString(std::ofstream& stream) override;
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
     void draw(UImg& support);
 
-    friend std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) ;
+    friend std::ostream& operator<<(std::ostream& flot , const Nageoire& ngeoire) ;
 };
 #endif

@@ -1,12 +1,12 @@
-#ifndef PEUREUSE
-#define PEUREUSE
+#ifndef PEUREUSE_H
+#define PEUREUSE_H
 
 #include "Comportement.h"
 class Peureuse:public Comportement{
 public:
-    virtual void executeBehavior(Bestiole* bestiole) override;
+    void executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins) override;
     virtual Peureuse* dupliquer() const override;
-     ~Peureuse(){};
+     ~Peureuse();
     virtual std::string getName() override;
 };
 

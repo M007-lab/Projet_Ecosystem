@@ -1,6 +1,6 @@
 #include "Carapace.h"
 
-Carapace::Carapace(Bestiole* base, double coefMort, double coefVitesse) {
+Carapace::Carapace(ConcreteBestiole* base, double coefMort, double coefVitesse) {
     this->name = "Carapace";
     this->base = base;
     this->coefCarapaceVitesse = coefVitesse;
@@ -15,10 +15,20 @@ double Carapace::getVitesse() const {
   return (1/this->coefCarapaceVitesse) * (this->getBase()->getVitesse());
 }
 
-void Carapace::toString() {
-    std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+double Carapace::getCamouflage() const {
+    return this->getBase()->getCamouflage();
+}
+
+ConcreteBestiole* Carapace::getBase() const{return base;}
+std::string Carapace::getName() const{return name;}
+
+ConcreteBestiole* Carapace::clone() {
+  return new Carapace(this->getBase()->clone(), this->coefCarapaceMort, this->coefCarapaceVitesse);
+}
+void Carapace::toString(std::ofstream& stream) {
+    
+    stream << this ;
+    // std::string str =  stream.str();
 }
 
 void Carapace::draw(UImg& support) {
@@ -34,7 +44,7 @@ void Carapace::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) {
-    flot << this->getBase() << "," << this->getName() << "," << carapace.coefCarapaceMort << "," << carapace.coefCarapaceVitesse << "\n";
+    flot << carapace.getBase() << "," << carapace.getName() << "," << carapace.coefCarapaceMort << "," << carapace.coefCarapaceVitesse << "\n";
     return flot ;
 }
 

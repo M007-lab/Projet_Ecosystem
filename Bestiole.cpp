@@ -1,10 +1,8 @@
 #include "Bestiole.h"
 
-#include "Milieu.h"
-
 #include <cstdlib>
 #include <cmath>
-
+#define PI 3.14159265359
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
@@ -18,17 +16,17 @@ Bestiole::Bestiole( void )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
-   x = y = 0;
-   cumulX = cumulY = 0.;
-   orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
-   vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+  //  x = y = 0;
+  //  cumulX = cumulY = 0.;
+  //  orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+  //  vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
-   couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur = new T[ 3 ];
+  //  couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
 }
 
@@ -38,16 +36,22 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   // cout << "const Bestiole (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
-   couleur = new T[ 3 ];
+   // couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
+}
+
+Bestiole::Bestiole(int x,int y,int ageMax,int vitesse,int orientation)
+{
+    identite = ++next;
+    x = x; y = y; ageMax = ageMax; vitesse = vitesse; orientation = orientation;
 }
 
 
@@ -56,7 +60,7 @@ Bestiole::~Bestiole( void )
 
    delete[] couleur;
 
-   cout << "dest Bestiole" << endl;
+   // cout << "dest Bestiole" << endl;
 
 }
 
@@ -106,28 +110,7 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
-{
-   
-   bouge( monMilieu.getWidth(), monMilieu.getHeight() );
-   
 
-}
-
-void Bestiole::collide()
-{
-    double testMort = rand()/RAND_MAX; // Rand_double
-    if(testMort<=this->getProbaMort())
-    {
-        //pour tuer la bestiole, on met son âge au maximum
-        setAge(Config::getInstance()->maxAge);
-    }
-    else
-    {
-        //si la collision ne tue pas, on repart dans la direction opposée
-        setOrientation(-getOrientation());
-    }
-}
 
 
 
@@ -152,24 +135,12 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 }
 
-
-bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
-    return false;
+double Bestiole::getCamouflage() const {
+  return 0.0;
 }
 
-std::list<Bestiole*> Bestiole::getVoisins(Milieu & monMilieu)
-{   
-    std::list<Bestiole*> voisins;
-    for (auto b : monMilieu.getListeBestioles())
-    {
-           if (this->jeTeVois(*b) && !(*this == *b)) // == is overloaded based on Identite
-           {
-              voisins.push_back(b);
-           }
-
-    }
-   return voisins;
+double Bestiole::getProbaMort() const {
+  return Config::getInstance()->probaMortCol;
 }
 
 
@@ -212,32 +183,16 @@ double Bestiole::getVitesse() const {
   return vitesse;
 }
 
-//setters
-void Bestiole::setX(int newX) {
-    x = newX;
-}
-void Bestiole::setY(int newY) {
-    y = newY;
-}
-void Bestiole::setVitesse(double newVitesse) {
-    vitesse = newVitesse;
-}
-void Bestiole::setOrientation(double newOrientation) {
-    orientation = newOrientation;
-}
-void Bestiole::setAge(int newAge) {
-    age = newAge;
-}
 
 
-double Bestiole::getDistanceA(const Bestiole* b) const {
-    double x_diff = this->getX() - b->getX();
-    double y_diff = this->getY() - b->getY();
+double Bestiole::getDistanceA(const Bestiole& b) const {
+    double x_diff = this->getX() - b.getX();
+    double y_diff = this->getY() - b.getY();
     return std::sqrt((x_diff * x_diff) + (y_diff * y_diff));
 }
 
 bool Bestiole::dansDistanceDetection(const Bestiole & b, double distance) const {
-    double dist = this.getDistanceA(b);
+    double dist = this->getDistanceA(b);
     return ( dist <= distance );
 }
 

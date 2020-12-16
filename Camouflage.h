@@ -1,5 +1,5 @@
-#ifndef CAMOUFLAGE_H
-#define CAMOUFLAGE_H
+#ifndef _CAMOUFLAGE_H
+#define _CAMOUFLAGE_H
 
 #include "AccessoireDecorateur.h"
 
@@ -8,9 +8,15 @@ private:
     double capaciteCamouflage;
 
 public:
-    Camouflage(Bestiole* base, double capacite);
-    double getCamouflage() override;
-    void toString() override;
+    Camouflage(ConcreteBestiole* base, double capacite);
+    double getCamouflage() const override;
+    double getVitesse() const override ;
+    double getProbaMort() const override ;
+    
+    ConcreteBestiole* clone();
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
+    void toString(ofstream& stream) override;
     void draw(UImg& support) override;
 
     friend std::ostream& operator<<(std::ostream& flot , const Camouflage& camouflage) ;

@@ -1,8 +1,13 @@
+#ifndef RANDUTILS_H
+#define RANDUTILS_H
+
 #include <vector>
+#include<stdexcept>
+#include "RandomDouble.h"
+#include "RandomInt.h"
+
 template <typename T>
-// Pour tirer n élément dans une liste/vector, en respectant les poids dans weight si sum(weight) = 1
-// Aucune garantie si sum(weight) != 1
-// Méthode qui va être utilisée pour initialiser la population
+// initialize a population of n elements
 std::vector<T> init_n_elements(std::vector<T> list,std::vector<double> weight,int number)
 {
     // Vérification des arguments
@@ -11,16 +16,13 @@ std::vector<T> init_n_elements(std::vector<T> list,std::vector<double> weight,in
     std::vector<T>  randomlist;
     for(int i=0;i<number;++i)
     {
-        randomlist.push_back(random_weighted(list,weight));
+        randomlist.push_back(random_element(list,weight));
     }
     return randomlist;
 };
 
 template <typename T>
-
-// Pour titer un élément au hasard dans une liste, en respectant les poids dans weight si sum(weight) = 1
-// Aucune garantie si sum(weight) != 1
-// Méthode qui va être utilisée pour ajouter au hasard une bestiole au cours de la simulation
+// yield random element from given list according to a weight
 T random_element(std::vector<T> list,std::vector<double> weight)
 {
     // Vérification des arguments
@@ -47,37 +49,4 @@ T random_element(std::vector<T> list,std::vector<double> weight)
     return randomlist[rd()];
 };
 
-class Rand_double{
-    private:
-        double _low, _high;
-    public:
-    Rand_double();
-    
-    Rand_double(double low, double high);
-    double operator()();
-
-};
-class Rand_int{
-    private:
-        int _low, _high;
-    public:
-        Rand_int();
-        
-        Rand_int(int low, int high);
-        int operator()();
-
-};
-Rand_double::Rand_double(double low, double high): _low(low),_high(high){}
-Rand_int::Rand_int(int low, int high): _low(low),_high(high){}
-
-double Rand_double::operator()()
-{
-    double f = (double)rand() / RAND_MAX;
-    return _low + f * (_high - _low);
-}
-
-int Rand_int::operator()()
-{
-    int f = rand() / RAND_MAX;
-    return _low + f * (_high - _low);
-}
+#endif

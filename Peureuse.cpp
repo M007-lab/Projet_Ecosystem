@@ -1,16 +1,16 @@
 #include "Peureuse.h"
 #include <cmath>
 
-void Peureuse::executeBehavior(Bestiole* bestiole) override{
-    std::list<Bestiole*> voisins = bestiole->getVoisins();
-    if(voisins.size()>((Config::getInstance()->seuilPeureuse)){
-            directionMoyenne = 0;
+void Peureuse::executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins){
+    // std::list<Bestiole*> voisins = bestiole->getVoisins(milieu);
+    if(voisins.size()>Config::getInstance()->pctPeureuse){
+            double directionMoyenne = 0;
             for (auto b : voisins) {
-                directionMoyenne += b->getDirection();
+                directionMoyenne += b->getOrientation();
             }
             directionMoyenne /= voisins.size();
 
-            bestiole->setDirection(-directionMoyenne)
+            bestiole->setOrientation(-directionMoyenne);
     }
 }
 

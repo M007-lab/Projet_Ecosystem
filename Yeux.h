@@ -9,10 +9,16 @@ class Yeux : public CapteurDecorateur {
     double capaciteDetection;
 
 public :
-    Yeux(Bestiole* base, double detec, double dist, double angle);
+    Yeux(ConcreteBestiole* base, double detec, double dist, double angle);
+    ConcreteBestiole* getBase() const;
+    std::string getName() const;
+    ConcreteBestiole* clone();
     bool jeTeVois(const Bestiole & b) const override;
-    void toString() override;
+    // bool dansDistanceDetection(const Bestiole & b) const;
+    // bool dansChampAngulaire(const Bestiole & b) const;
+    void toString(std::ofstream& stream) override;
     void draw(UImg& support) override;
+
 
     friend std::ostream& operator<<(std::ostream& flot , const Yeux& yeux) ;
 

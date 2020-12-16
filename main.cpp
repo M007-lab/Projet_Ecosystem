@@ -1,19 +1,21 @@
 #include "Aquarium.h"
 #include "Milieu.h"
-#include "Bestiole.h"
-
+#include "Configuration.h"
+#include "FactoryBestiole.h"
+#include "AccessoireDecorateur.h"
+#include "CapteurDecorateur.h"
 #include <iostream>
 
 using namespace std;
 
 
-int main()
+int main(int argc, char *argv[])
 {
-
+   Config::filename = argv[1];
    Aquarium       ecosysteme( 640, 480, 30 );
 
-   for ( int i = 1; i <= 20; ++i )
-      ecosysteme.getMilieu().addMember( Bestiole() );
+   // for ( int i = 1; i <= 20; ++i )
+   //    ecosysteme.getMilieu().addMember( Bestiole() );
    ecosysteme.run();
 
 

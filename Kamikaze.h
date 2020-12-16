@@ -1,12 +1,13 @@
-#ifndef KAMIKAZE
-#define KAMIKAZE
+#ifndef KAMIKAZE_H
+#define KAMIKAZE_H
 
 #include "Comportement.h"
+
 class Kamikaze:public Comportement{
 public:
-    virtual void executeBehavior(Bestiole* bestiole) override;
+    void executeBehavior(Bestiole* bestiole, std::list<Bestiole*> voisins) override;
     virtual Kamikaze* dupliquer() const override;
-     ~Kamikaze(){};
+     ~Kamikaze();
     virtual std::string getName() override;
 };
 

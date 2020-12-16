@@ -2,29 +2,27 @@
 #include "Gregaire.h"
 #include <cmath>
 
-void Gregaire::executeBehavior(Bestiole* bestiole) override{
+void Gregaire::executeBehavior(Bestiole* bestiole,std::list<Bestiole*> voisins) {
     double directionMoyenne;
     double vitesse = bestiole->getVitesse();
-    std::list<Bestiole*> voisins = bestiole->getVoisins();
      
-
     //calcul de l'direction moyenne des bestioles voisines
     if(voisins.size()!=0) {
         directionMoyenne = 0;
         for (auto b : voisins) {
-            directionMoyenne += b->getDirection();
+            directionMoyenne += b->getOrientation();
         }
         directionMoyenne /= voisins.size();
     }
     //si elle a pas de voisins, la direction reste la même
     else{
-        directionMoyenne = bestiole->getDirection();
+        directionMoyenne = bestiole->getOrientation();
     }
     
-    bestiole->setDirection(directionMoyenne);
+    bestiole->setOrientation(directionMoyenne);
 }
 
-Comportement* Gregaire::dupliquer() const {
+Gregaire* Gregaire::dupliquer() const {
     return new Gregaire(*this);
 }
 

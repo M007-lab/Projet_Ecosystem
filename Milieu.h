@@ -3,12 +3,13 @@
 
 
 #include "UImg.h"
-#include "Bestiole.h"
-#include "CreateurBestiole.h"
-// #include "Createur.h"
+#include "FactoryBestiole.h"
+
+
 #include <iostream>
 #include <vector>
 #include <map>
+#include <list>
 
 using namespace std;
 
@@ -50,7 +51,8 @@ private :
    std::vector<Comportement *> listeComportements;
    std::map<Comportement*,Color> mapComportementColor;
    std::map<Comportement*, double> mapComportementWeight;
-   CreateurBestiole creator = CreateurBestiole() ;
+   FactoryBestiole creator = FactoryBestiole() ;
+   UImg graphicSupport;
 
 public :
    Milieu( int _width, int _height );
@@ -65,9 +67,10 @@ public :
    void newBestiole();
    void addBestiole(Bestiole * b );
    void killBestiole(int id);
-   void killBestiole(int x, int y); // input mouse killing
+   void killBestiole(int x, int y); // mouse input killing
    std::list<Bestiole*> getBestiolesList(); // return new Liste Bestiole after killing expired ones
-   int  nbVoisins( const Bestiole & b );
+//     int  nbVoisins( const Bestiole & b );
+   UImg& getGraphicSupport();
    void report(std::ofstream &file);
 
 };

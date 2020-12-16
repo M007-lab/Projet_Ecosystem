@@ -11,7 +11,7 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {  
    
-   
+   graphicSupport = UImg( width, height, 1, 3 );
    // create initiale population
    init_population();
 
@@ -29,7 +29,7 @@ Milieu::~Milieu( void )
    cout << "dest Milieu" << endl;
    for (auto it = idToBestioles.begin(); it != idToBestioles.end();)
     {
-        it->second->toString(); std::cout <<  " va être supprimée " << std::endl;
+        //it->second->toString(); std::cout <<  " va être supprimée " << std::endl;
         delete it->second;
         idToBestioles.erase(it++);
     }
@@ -37,8 +37,8 @@ Milieu::~Milieu( void )
     for(auto e : listeComportements)
        delete e;
     listeComportements.clear();
-    mapComportementPct.clear();
-    mapComportementCouleur.clear();
+    mapComportementWeight.clear();
+    mapComportementColor.clear();
     std::cout << "Liste des comportements a été supprimée " << std::endl;
 
 }
@@ -53,8 +53,8 @@ void Milieu::init_population()
     std::vector<Color> colors = {blue,red,yellow,green,purple};
     for(unsigned int i=0;i<listeComportements.size();++i)
     {
-        // mapComportementColor[listeComportements[i]] = couleurs[i];
-        mapComportementWeight[listeComportements[i] = weights[i];
+        mapComportementColor[listeComportements[i]] = colors[i];
+        mapComportementWeight[listeComportements[i]] = weights[i];
     }
 
     // initialisation de la population :
@@ -81,14 +81,14 @@ void Milieu::step( void )
    for(auto b : listeBestioles)
    {
 
-      Bestiole* bClone = b->action( *this );
+      Bestiole* bClone = b->action( getBestiolesList() );
       if(bClone != nullptr)
       {
          addBestiole(bClone);
-         bClone->action(*this);
+         bClone->bouge(width,height);
 
       }
-      b->draw( *this );
+      b->draw(graphicSupport);
 
    } // for
 
@@ -120,19 +120,19 @@ void Milieu::newBestiole( ){
    }
 }
 
-int Milieu::nbVoisins( const Bestiole & b )
-{
+// int Milieu::nbVoisins( const Bestiole & b )
+// {
 
-   int         nb = 0;
+//    int         nb = 0;
 
 
-   for ( std::vector<Bestiole>::iterator it = idToBestioles.begin() ; it != idToBestioles.end() ; ++it )
-      //if ( !(b == *it) && b.jeTeVois(*it) )
-         ++nb;
+//    for ( std::vector<Bestiole>::iterator it = idToBestioles.begin() ; it != idToBestioles.end() ; ++it )
+//       //if ( !(b == *it) && b.jeTeVois(*it) )
+//          ++nb;
 
-   return nb;
+//    return nb;
 
-}
+// }
 void Milieu::killBestiole(int id)
 {
    if (idToBestioles.find(id) != idToBestioles.end())
@@ -158,7 +158,7 @@ void Milieu::killBestiole(int x, int y)
 std::list<Bestiole*> Milieu::getBestiolesList()
 {
     std::list<Bestiole*> listeBestioles;
-    // Mise à jour de la MAP et _listeBestioles
+    // Mise à jour de bestioles
     for (auto it = idToBestioles.begin(); it != idToBestioles.end();)
     {
         if(it->second->getAge() >= it->second->getAgeMax())
@@ -180,3 +180,16 @@ int Milieu::getWidth( void ) const
 { return width; }
 int Milieu::getHeight( void ) const 
 { return height; }
+CImg<T>&  Milieu::getGraphicSupport()
+{
+    return graphicSupport;
+}
+
+void Milieu::report(std::ofstream& file)
+{
+    std::list<Bestiole*> listeBestioles = getBestiolesList();
+    for(auto bestiole : listeBestioles)
+    {
+        bestiole->toString(file);
+    }
+}

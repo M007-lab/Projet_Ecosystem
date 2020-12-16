@@ -2,24 +2,22 @@
 #define CREATEURBESTIOLE_H
 
 #include "Configuration.h"
-#include "FactoryBestiole.h"
 #include "Factory.h"
+#include "ConcreteBestiole.h"
+#include "BestioleSimple.h"
 #include "Comportement.h"
 #include "Multiple.h"
 #include "Gregaire.h"
 #include "Peureuse.h"
 #include "Kamikaze.h"
 #include "Prevoyante.h"
-#include "Bestiole.h"
-#include "BestioleSimple.h"
 #include "Oreille.h"
 #include "Yeux.h" 
 #include "Nageoire.h"
 #include "Carapace.h"
 #include "Camouflage.h"
-
-
 #include "RandomUtils.h"
+
 
 class FactoryBestiole : public Factory
 {   
@@ -41,8 +39,8 @@ class FactoryBestiole : public Factory
         Rand_double orientation;
     public:
         FactoryBestiole();
-        ~FactoryBestiole();
-        Bestiole * createBestiole(Comportement* c,unsigned char _color[3]);
+        ~FactoryBestiole(){std::cout<<"factory dest";};
+        ConcreteBestiole* createBestiole(Comportement* c,unsigned char _color[3]);
 };
 
 #endif

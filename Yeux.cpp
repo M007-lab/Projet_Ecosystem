@@ -1,6 +1,6 @@
 #include "Yeux.h"
 
-Yeux::Yeux(Bestiole* base, double detec, double dist, double angle) {
+Yeux::Yeux(ConcreteBestiole* base, double detec, double dist, double angle) {
     this->name = "Yeux";
     this->base = base;
     this->capaciteDetection = detec;
@@ -8,18 +8,25 @@ Yeux::Yeux(Bestiole* base, double detec, double dist, double angle) {
     this->distance = dist;
 }
 
+ConcreteBestiole* Yeux::getBase() const{return base;}
+std::string Yeux::getName() const{return name;}
 
+ConcreteBestiole* Yeux::clone()
+{
+    ConcreteBestiole* ptr = new Yeux(this->getBase()->clone(),this->capaciteDetection,this->distance,this->angle);
+    return ptr;
+}
 bool Yeux::jeTeVois(const Bestiole & autre) const {
-    bool voisOk = this->capaciteDetection > b.getCamouflage();
-    bool distanceOk = this->dansDistanceDetection(b, this->distance);
-    bool champOk = this->dansChampAngulaire(b, this->angle);
-    return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(b));
+    bool voisOk = this->capaciteDetection > autre.getCamouflage();
+    bool distanceOk = this->dansDistanceDetection(autre,distance);
+    bool champOk = this->dansChampsAngulaire(autre,angle);
+    return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(autre));
 }
 
-void Yeux::toString() {
-    std::ostringstream stream;
-    stream = std::cout << this ;
-    std::string str =  stream.str();
+void Yeux::toString(std::ofstream& stream) {
+    
+    stream << this ;
+    // std::string str =  stream.str();
 }
 
 void Yeux::draw(UImg& support) {
@@ -36,7 +43,7 @@ void Yeux::draw(UImg& support) {
 }
 
 std::ostream& operator<<(std::ostream& flot , const Yeux& yeux) {
-    flot << this->getBase() << "," << this->getName() << "," << yeux.distance << "," << yeux.angle <<< "," << yeux.capaciteDetection << "\n";
+    flot << yeux.getBase() << "," << yeux.getName() << "," << yeux.distance << "," << yeux.angle << "," << yeux.capaciteDetection << "\n";
     return flot ;
 }
 
