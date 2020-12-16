@@ -22,8 +22,8 @@ ConcreteBestiole* Nageoire::clone() {
   return new Nageoire(this->getBase()->clone(), this->coefNageoire);
 }
 
-void Nageoire::toString(std::ostringstream stream) {
-    // std::ostringstream stream;
+void Nageoire::toString(std::ofstream& stream) {
+    // std::ofstream& stream;
     stream << this ;
     //std::string str =  stream.str();;
 }

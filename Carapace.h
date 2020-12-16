@@ -17,7 +17,7 @@ public:
     ConcreteBestiole* clone();
     ConcreteBestiole* getBase() const;
     std::string getName() const;
-    void toString(std::ostringstream stream) override;
+    void toString(std::ofstream& stream) override;
     void draw(UImg& support) override;
 
     friend std::ostream& operator<<(std::ostream& flot , const Carapace& carapace) ;

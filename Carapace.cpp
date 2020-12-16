@@ -25,7 +25,7 @@ std::string Carapace::getName() const{return name;}
 ConcreteBestiole* Carapace::clone() {
   return new Carapace(this->getBase()->clone(), this->coefCarapaceMort, this->coefCarapaceVitesse);
 }
-void Carapace::toString(std::ostringstream stream) {
+void Carapace::toString(std::ofstream& stream) {
     
     stream << this ;
     // std::string str =  stream.str();

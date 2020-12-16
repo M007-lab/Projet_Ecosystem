@@ -21,7 +21,7 @@ public :
     virtual double getCamouflage() const override = 0 ;
     virtual double getProbaMort() const override  = 0;
 
-    virtual void toString(std::ostringstream stream) = 0;
+    virtual void toString(ofstream& stream) = 0;
     virtual void draw(UImg& support) = 0;
 
 };

@@ -39,7 +39,7 @@ class FactoryBestiole : public Factory
         Rand_double orientation;
     public:
         FactoryBestiole();
-        // ~FactoryBestiole();
+        ~FactoryBestiole(){std::cout<<"factory dest";};
         ConcreteBestiole* createBestiole(Comportement* c,unsigned char _color[3]);
 };
 

@@ -30,7 +30,7 @@ protected :
    double            vitesse;
    double            age;
    double            ageMax;
-   T               * couleur ;
+   T                 couleur[3] = {0,0,0};  
    
 
 public :                                           // Forme canonique :
@@ -40,9 +40,9 @@ public :                                           // Forme canonique :
    virtual ~Bestiole( void );                              // Destructeur
    void bouge( int xLim, int yLim );
    virtual void draw( UImg & support ) = 0;
-   virtual void toString(iostream & out) const = 0;
+   virtual void toString(std::ofstream &) const = 0;
    virtual void toString() const = 0;
-  
+   virtual Bestiole* action( std::list<Bestiole*> allBestioles ) = 0;
    virtual void collide(Bestiole& bestiole) = 0; // Collision between Bestioles
    
 

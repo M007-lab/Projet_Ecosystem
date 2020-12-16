@@ -23,8 +23,8 @@ ConcreteBestiole* Camouflage::clone() {
   return new Camouflage(this->getBase()->clone(), this->capaciteCamouflage);
 }
 
-void Camouflage::toString(std::ostringstream stream) {
-    // std::ostringstream stream;
+void Camouflage::toString(std::ofstream& stream) {
+    // std::ofstream& stream;
     stream << this ;
     // std::string str =  stream.str();
 }

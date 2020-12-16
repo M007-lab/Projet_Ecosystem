@@ -16,17 +16,17 @@ Bestiole::Bestiole( void )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   // cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
-   x = y = 0;
-   cumulX = cumulY = 0.;
-   orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
-   vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+  //  x = y = 0;
+  //  cumulX = cumulY = 0.;
+  //  orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+  //  vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
-   couleur = new T[ 3 ];
-   couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-   couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur = new T[ 3 ];
+  //  couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
+  //  couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
 }
 
@@ -36,20 +36,21 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   // cout << "const Bestiole (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
-   couleur = new T[ 3 ];
+   // couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
 
 }
 
 Bestiole::Bestiole(int x,int y,int ageMax,int vitesse,int orientation)
 {
+    identite = ++next;
     x = x; y = y; ageMax = ageMax; vitesse = vitesse; orientation = orientation;
 }
 
@@ -59,7 +60,7 @@ Bestiole::~Bestiole( void )
 
    delete[] couleur;
 
-   cout << "dest Bestiole" << endl;
+   // cout << "dest Bestiole" << endl;
 
 }
 

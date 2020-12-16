@@ -53,7 +53,7 @@ void Milieu::init_population()
     std::vector<Color> colors = {blue,red,yellow,green,purple};
     for(unsigned int i=0;i<listeComportements.size();++i)
     {
-        // mapComportementColor[listeComportements[i]] = couleurs[i];
+        mapComportementColor[listeComportements[i]] = colors[i];
         mapComportementWeight[listeComportements[i]] = weights[i];
     }
 
@@ -77,7 +77,7 @@ void Milieu::step( void )
    list<Bestiole*> listeBestioles = getBestiolesList();
    
 
-   //cimg_forXY( *this, width, height ) fillC( width, height, 0, white[0], white[1], white[2] );
+   cimg_forXY( *this, width, height ) fillC( width, height, 0, white[0], white[1], white[2] );
    for(auto b : listeBestioles)
    {
 
@@ -158,7 +158,7 @@ void Milieu::killBestiole(int x, int y)
 std::list<Bestiole*> Milieu::getBestiolesList()
 {
     std::list<Bestiole*> listeBestioles;
-    // Mise à jour de la MAP et _listeBestioles
+    // Mise à jour de bestioles
     for (auto it = idToBestioles.begin(); it != idToBestioles.end();)
     {
         if(it->second->getAge() >= it->second->getAgeMax())
@@ -183,4 +183,13 @@ int Milieu::getHeight( void ) const
 CImg<T>&  Milieu::getGraphicSupport()
 {
     return graphicSupport;
+}
+
+void Milieu::report(std::ofstream& file)
+{
+    std::list<Bestiole*> listeBestioles = getBestiolesList();
+    for(auto bestiole : listeBestioles)
+    {
+        bestiole->toString(file);
+    }
 }

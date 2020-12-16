@@ -16,7 +16,7 @@ public :
     bool jeTeVois(const Bestiole & b) const override;
     // bool dansDistanceDetection(const Bestiole & b) const;
     // bool dansChampAngulaire(const Bestiole & b) const;
-    void toString(std::ostringstream stream) override;
+    void toString(std::ofstream& stream) override;
     void draw(UImg& support) override;
 
 

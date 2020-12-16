@@ -19,7 +19,7 @@ class CapteurDecorateur : public ConcreteBestiole {
     
     virtual bool jeTeVois( const Bestiole & b ) const override = 0;
 
-    virtual void toString(std::ostringstream stream) = 0;
+    virtual void toString(ofstream& stream) = 0;
     virtual void draw(UImg& support) = 0;
 
 };

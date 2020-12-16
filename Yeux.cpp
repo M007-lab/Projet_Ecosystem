@@ -23,7 +23,7 @@ bool Yeux::jeTeVois(const Bestiole & autre) const {
     return ( (voisOk && distanceOk && champOk) || this->getBase()->jeTeVois(autre));
 }
 
-void Yeux::toString(std::ostringstream stream) {
+void Yeux::toString(std::ofstream& stream) {
     
     stream << this ;
     // std::string str =  stream.str();

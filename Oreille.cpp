@@ -10,8 +10,8 @@ Oreille::Oreille(ConcreteBestiole* base, double detec, double dist) {
 }
 ConcreteBestiole* Oreille::getBase() const{return base;}
 std::string Oreille::getName() const{return name;}
-void Oreille::toString(std::ostringstream stream) {
-    // std::ostringstream stream;
+void Oreille::toString(std::ofstream& stream) {
+    // std::ofstream& stream;
     stream  << this ;
     //std::string str =  stream.str();
 }
