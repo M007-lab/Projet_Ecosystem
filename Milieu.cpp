@@ -98,7 +98,7 @@ void Milieu::addBestiole(Bestiole * b )
 { 
    if(idToBestioles.find(b->getIdentite()) == idToBestioles.end()){
             idToBestioles[b->getIdentite()] = b;
-            b->toString();
+            // b->toString();
    }     
    b->initCoords(width, height); 
 }
@@ -139,7 +139,7 @@ void Milieu::killBestiole(int id)
     {
         delete idToBestioles.find(id)->second;
         idToBestioles.erase(idToBestioles.find(id));
-        std::cout << "La bestiole : " << id << " a été tuée " << std::endl;
+        std::cout << "Bestiole n°  : " << id << " was killed " << std::endl;
     }
 }
 

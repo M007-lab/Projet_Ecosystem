@@ -4,9 +4,9 @@
 #include <cmath>
 #define PI 3.14159265359
 
-const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
+// const double      Bestiole::AFF_SIZE = 8.;
+// const double      Bestiole::MAX_VITESSE = 10.;
+// const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
 
@@ -58,7 +58,7 @@ Bestiole::Bestiole(int x,int y,int ageMax,int vitesse,int orientation)
 Bestiole::~Bestiole( void )
 {
 
-   delete[] couleur;
+   //delete[] couleur;
 
    // cout << "dest Bestiole" << endl;
 
@@ -116,16 +116,16 @@ void Bestiole::bouge( int xLim, int yLim )
 
 
 
-void Bestiole::draw( UImg & support )
-{
+// void Bestiole::draw( UImg & support )
+// {
 
-   double xt = x + cos( orientation )*AFF_SIZE/2.;
-   double yt = y - sin( orientation )*AFF_SIZE/2.;
+//    double xt = x + cos( orientation )*AFF_SIZE/2.;
+//    double yt = y - sin( orientation )*AFF_SIZE/2.;
 
-   support.draw_ellipse(x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180.,couleur);
-   support.draw_circle(xt, yt, AFF_SIZE/2., couleur );
+//    support.draw_ellipse(x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180.,couleur);
+//    support.draw_circle(xt, yt, AFF_SIZE/2., couleur );
 
-}
+// }
 
 
 bool operator==( const Bestiole & b1, const Bestiole & b2 )
