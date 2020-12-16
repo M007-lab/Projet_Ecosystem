@@ -11,7 +11,7 @@ Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {  
    
-   graphicSupport = UImg( width, height, 1, 3 );
+   // graphicSupport = UImg( width, height, 1, 3 );
    // create initiale population
    init_population();
 
@@ -45,12 +45,13 @@ Milieu::~Milieu( void )
 
 void Milieu::init_population()
 {
-   
-    listeComportements  = {new Gregaire,new Kamikaze } ;//, new Peureuse};//,new Prevoyante,new Multiple};
+    std::cout << "Init Population" << endl;
+    listeComportements  = {new Gregaire,new Kamikaze , new Peureuse,new Prevoyante,new Multiple};
     // Loading Comportement percentage
-    std::vector<double> weights = {Config::getInstance()->pctGregaire,Config::getInstance()->pctKamikaze};//,Config::getInstance()->pctPeureuse,Config::getInstance()->pctPrevoyante,Config::getInstance()->pctMulti};
+    std::vector<double> weights = {Config::getInstance()->pctGregaire,Config::getInstance()->pctKamikaze,Config::getInstance()->pctPeureuse,Config::getInstance()->pctPrevoyante,Config::getInstance()->pctMulti};
     // list of pre-defined colors
     std::vector<Color> colors = {blue,red,yellow,green,purple};
+    
     for(unsigned int i=0;i<listeComportements.size();++i)
     {
         mapComportementColor[listeComportements[i]] = colors[i];
@@ -60,11 +61,13 @@ void Milieu::init_population()
     // initialisation de la population :
     int n = Config::getInstance()->nMax;
     // On utilise utils_init pour créer une liste de n comportements qui respecte les poids
+    std::cout << "Number of bestioles: " << n << endl;
     std::vector<Comportement*> population = init_n_elements(listeComportements,weights,n);
-    for (auto element : population)
-    {
-        Color c = mapComportementColor[element];
-        addBestiole(creator.createBestiole(element,c.color));
+    for (auto comp : population)
+    {   
+        std::cout << "Comportement: " << comp->getName() << endl;
+        Color c = mapComportementColor[comp];
+        addBestiole(creator.createBestiole(comp,c.color));
     }
 
 }
@@ -80,15 +83,17 @@ void Milieu::step( void )
    cimg_forXY( *this, width, height ) fillC( width, height, 0, white[0], white[1], white[2] );
    for(auto b : listeBestioles)
    {
-
-      Bestiole* bClone = b->action( getBestiolesList() );
+      
+      Bestiole* bClone = b->action(getBestiolesList(), *this);
       if(bClone != nullptr)
       {
          addBestiole(bClone);
          bClone->bouge(width,height);
 
       }
-      b->draw(graphicSupport);
+      b->draw(*this);
+      
+      
 
    } // for
 
@@ -98,9 +103,9 @@ void Milieu::addBestiole(Bestiole * b )
 { 
    if(idToBestioles.find(b->getIdentite()) == idToBestioles.end()){
             idToBestioles[b->getIdentite()] = b;
-            // b->toString();
+            b->toString();
    }     
-   b->initCoords(width, height); 
+   // b->initCoords(width, height); 
 }
 
 void Milieu::newBestiole( ){
@@ -143,7 +148,7 @@ void Milieu::killBestiole(int id)
     }
 }
 
-// Used when mouse click to kill bestiole
+// Using  mouse click to kill bestiole
 void Milieu::killBestiole(int x, int y)
 {
    for(auto b: getBestiolesList()){
@@ -180,9 +185,10 @@ int Milieu::getWidth( void ) const
 { return width; }
 int Milieu::getHeight( void ) const 
 { return height; }
-CImg<T>&  Milieu::getGraphicSupport()
+
+UImg&  Milieu::getGraphicSupport()
 {
-    return graphicSupport;
+    return this->graphicSupport;
 }
 
 void Milieu::report(std::ofstream& file)

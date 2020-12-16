@@ -39,7 +39,7 @@ void Aquarium::report()
    filename << "Rapport_Simulation_" <<std::put_time(&tm, "%d-%m-%Y %H-%M-%S")  << ".txt";
    std::ofstream myfile;
    myfile.open(filename.str());
-   flotte->report(myfile);
+   flotte->report(myfile); // call report function of Milieu
 }
 void Aquarium::run( void )
 {
@@ -57,9 +57,10 @@ void Aquarium::run( void )
          if ( is_keyESC() ) close();
       }
      if(button()&1){
-          flotte->killBestiole(mouse_x(),mouse_y());
+          flotte->killBestiole(mouse_x(),mouse_y()); // onclick, kill bestiole
       }
-      flotte->step();
+      report();
+      flotte->step(); // Milieu iteration 
       display( *flotte );
 
       wait( delay );

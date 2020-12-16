@@ -14,7 +14,7 @@ public:
     ConcreteBestiole* clone() override;
     Comportement* getComportement() const override;
     double getCamouflage() const override;
-    // void draw(UImg& support) override;
+    void draw(UImg& support) override;
     //virtual void getDecorateurs(std::list<std::string> &decorateurs) override;
 
 

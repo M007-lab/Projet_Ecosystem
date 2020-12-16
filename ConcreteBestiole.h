@@ -10,7 +10,7 @@
 
 
 class ConcreteBestiole: public Bestiole {
-    
+    static const T    white[] ;
 public:
     ConcreteBestiole(){};
     ConcreteBestiole(int _x,int _y, int _ageMax, double _vitesse, double _orientation);
@@ -21,7 +21,7 @@ public:
     virtual Comportement* getComportement() const =0;
     virtual ConcreteBestiole* checkClone();
     virtual void collide(Bestiole& autre);
-    virtual ConcreteBestiole* action( std::list<Bestiole*> allBestioles );
+    virtual ConcreteBestiole* action( std::list<Bestiole*> allBestioles, UImg& flotte );
     virtual void toString(std::ofstream &) const override;
     virtual void toString() const override;
    

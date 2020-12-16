@@ -26,7 +26,7 @@ ConcreteBestiole* Oreille::clone() {
   return new Oreille(this->getBase()->clone(), this->capaciteDetection, this->distance);
 }
 void Oreille::draw(UImg& support) {
-    support.draw_circle(this->getX(),this->getY(), this->distance,this->getColor(), 1.0f, 0xFFFFFFFF); // Dessine un cerle représentant le rayon d'écoute de la bestiole
+    support.draw_circle(this->getX(),this->getY(), this->distance,this->getColor(), 1.0f, 0xFFFFFFFF); // Draw a cercle representing the heard area
     this->getBase()->draw(support);
 }
 

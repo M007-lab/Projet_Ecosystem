@@ -1,0 +1,2 @@
+ID : 1, AGE : 0, X = 32549, Y : 1251901216, V : 4.66357e-310, O : -7621.5, BHV : Grégaire CAM : 0, PMR: 0.05
+ID : 2, AGE : 0, X = 32549, Y : 0, V : 4.66357e-310, O : 0, BHV : Kamikaze CAM : 0, PMR: 0.05

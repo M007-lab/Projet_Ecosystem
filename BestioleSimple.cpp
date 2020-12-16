@@ -4,7 +4,7 @@
 BestioleSimple::BestioleSimple(int _x,int _y, int _ageMax, double _vitesse, double _orientation,Comportement* c, unsigned char* _color) : ConcreteBestiole(_x,_y,_ageMax,_vitesse,_orientation)
 {
     this->comportement = c;
-    //this->setColor(_color);
+    this->setColor(_color);
 }
 
 BestioleSimple::BestioleSimple(const BestioleSimple& b) : ConcreteBestiole(b)
@@ -38,12 +38,12 @@ ConcreteBestiole* BestioleSimple::clone()
     return ptr;
 }
 
-// void BestioleSimple::draw(UImg& support){
-//     double xt = (double) this->getX() - cos(this->getOrientation())*Config::getInstance()->rayon/2;
-//     double yt = (double) this->getY() + sin(this->getOrientation())*Config::getInstance()->rayon/2;
-//     support.draw_ellipse(xt, yt, Config::getInstance()->rayon*2, Config::getInstance()->rayon/2.5,-this->getOrientation()/M_PI*180.,this->getColor());
-//     support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon,getColor());
-// }
+void BestioleSimple::draw(UImg& support){
+    double xt = (double) this->getX() - cos(this->getOrientation())*Config::getInstance()->rayon/2;
+    double yt = (double) this->getY() + sin(this->getOrientation())*Config::getInstance()->rayon/2;
+    support.draw_ellipse(xt, yt, Config::getInstance()->rayon*2, Config::getInstance()->rayon/2.5,-this->getOrientation()/M_PI*180.,this->getColor());
+    support.draw_circle(this->getX(),this->getY(),Config::getInstance()->rayon,getColor());
+ }
 
 
 

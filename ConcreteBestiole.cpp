@@ -1,6 +1,6 @@
 #include "ConcreteBestiole.h"
 #define PI 3.14159265359
-
+const T    ConcreteBestiole::white[] = { (T)0, (T)0, (T)0 };
 ConcreteBestiole::ConcreteBestiole(int _x,int _y, int _ageMax, double _vitesse, double _orientation) : Bestiole(_x,_y,_ageMax,_vitesse,_orientation)
 {
     
@@ -27,14 +27,17 @@ double ConcreteBestiole::getCamouflage() const {
 double ConcreteBestiole::getProbaMort() const {
   return Config::getInstance()->probaMortCol;
 }
-ConcreteBestiole* ConcreteBestiole::action(std::list<Bestiole*> allBestioles)
+ConcreteBestiole* ConcreteBestiole::action(std::list<Bestiole*> allBestioles, UImg& flotte)
 {
    
-   bouge(Config::getInstance()->width, Config::getInstance()->height);
    
-
-    std::list<Bestiole*> bestioles = getVoisins(allBestioles);
-    for(auto b: bestioles)
+    this->draw(flotte);
+    std::list<Bestiole*> voisins = getVoisins(allBestioles);
+    //std::cout << this->getComportement()->getName() << endl;
+    this->getComportement()->executeBehavior(this,voisins); // call behavior that will update position
+    bouge(Config::getInstance()->width, Config::getInstance()->height);
+    this->draw(flotte);
+    for(auto b: voisins)
     {
         if(b->getIdentite()!=this->getIdentite() && this->getDistanceA(*b)<2*Config::getInstance()->rayon)
         {
@@ -99,6 +102,8 @@ void ConcreteBestiole::collide(Bestiole& autre)
 }
 
 void ConcreteBestiole::draw(UImg& support){
+    
+    std::cout << "DRAWING CONCRETEBESTIOLE"  << endl;
     double xt = (double) this->getX() - cos(this->getOrientation())*Config::getInstance()->rayon/2;
     double yt = (double) this->getY() + sin(this->getOrientation())*Config::getInstance()->rayon/2;
     support.draw_ellipse(xt, yt, Config::getInstance()->rayon*2, Config::getInstance()->rayon/2.5,-this->getOrientation()/M_PI*180.,this->getColor());

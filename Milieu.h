@@ -62,10 +62,10 @@ public :
    int getHeight( void ) const;
    // std::vector<Bestiole*> getListeBestioles() const;
 
-   void init_population();
-   void step( void );
-   void newBestiole();
-   void addBestiole(Bestiole * b );
+   void init_population(); // initializing first population of Bestioles based on Configuration proportions
+   void step( void );  
+   void newBestiole();  // add new bestiole with ProbaNouveau
+   void addBestiole(Bestiole * b ); // add bestioles to idToBestioleList
    void killBestiole(int id);
    void killBestiole(int x, int y); // mouse input killing
    std::list<Bestiole*> getBestiolesList(); // return new Liste Bestiole after killing expired ones

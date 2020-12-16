@@ -1,0 +1,5 @@
+ID : 2, AGE : 0, X = 0, Y : 850189472, V : 4.68074e-310, O : -4.68074e-310, BHV : Grégaire CAM : 0.649707, PMR: 0.05
+ID : 4, AGE : 0, X = 0, Y : 850189472, V : 4.68074e-310, O : -4.68074e-310, BHV : Kamikaze CAM : 0.651132, PMR: 0.05
+ID : 6, AGE : 0, X = 32521, Y : 0, V : 4.68074e-310, O : 3.14159, BHV : Peureuse CAM : 0.336351, PMR: 0.05
+ID : 8, AGE : 0, X = 32521, Y : 0, V : 4.68074e-310, O : 3.14159, BHV : Prévoyante CAM : 0.304956, PMR: 0.05
+ID : 10, AGE : 0, X = 32521, Y : 0, V : 4.68074e-310, O : 3.14159, BHV : Multiple CAM : 0.609106, PMR: 0.05

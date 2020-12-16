@@ -3,8 +3,9 @@
 #include <cmath>
 
 void Gregaire::executeBehavior(Bestiole* bestiole,std::list<Bestiole*> voisins) {
+   
     double directionMoyenne;
-    double vitesse = bestiole->getVitesse();
+    // double vitesse = bestiole->getVitesse();
      
     //calcul de l'direction moyenne des bestioles voisines
     if(voisins.size()!=0) {

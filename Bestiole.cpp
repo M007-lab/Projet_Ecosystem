@@ -68,8 +68,8 @@ Bestiole::~Bestiole( void )
 void Bestiole::initCoords( int xLim, int yLim )
 {
 
-   x = rand() % xLim;
-   y = rand() % yLim;
+  //  x = rand() % xLim;
+  //  y = rand() % yLim;
 
 }
 
@@ -110,6 +110,11 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
+void Bestiole::setColor(unsigned char* color)
+{
+    for(int i=0;i<3;++i)
+        this->couleur[i] = color[i];
+}
 
 
 
